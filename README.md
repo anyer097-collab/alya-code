@@ -1,129 +1,96 @@
-<p align="center">
-  <a href="https://opencode.ai">
-    <picture>
-      <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
-      <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="Alya Code logo">
-    </picture>
-  </a>
-</p>
-<p align="center">The open source AI coding agent.</p>
-<p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/alya-code-ai"><img alt="npm" src="https://img.shields.io/npm/v/alya-code-ai?style=flat-square" /></a>
-  <a href="https://github.com/anyer097-collab/alya-code/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/alya-code/publish.yml?style=flat-square&branch=dev" /></a>
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="README.md">English</a> |
-  <a href="README.zh.md">简体中文</a> |
-  <a href="README.zht.md">繁體中文</a> |
-  <a href="README.ko.md">한국어</a> |
-  <a href="README.de.md">Deutsch</a> |
-  <a href="README.es.md">Español</a> |
-  <a href="README.fr.md">Français</a> |
-  <a href="README.it.md">Italiano</a> |
-  <a href="README.da.md">Dansk</a> |
-  <a href="README.ja.md">日本語</a> |
-  <a href="README.pl.md">Polski</a> |
-  <a href="README.ru.md">Русский</a> |
-  <a href="README.bs.md">Bosanski</a> |
-  <a href="README.ar.md">العربية</a> |
-  <a href="README.no.md">Norsk</a> |
-  <a href="README.br.md">Português (Brasil)</a> |
-  <a href="README.th.md">ไทย</a> |
-  <a href="README.tr.md">Türkçe</a> |
-  <a href="README.uk.md">Українська</a> |
-  <a href="README.bn.md">বাংলা</a> |
-  <a href="README.gr.md">Ελληνικά</a> |
-  <a href="README.vi.md">Tiếng Việt</a>
-</p>
+```
+                                      ▄
+█▀▀█ █__█ █  █ █▀▀█ █▀▀▀ █▀▀█ █▀▀█ █▀▀▀
+█▄▄█ █__█ ▀▄▄▀ █▄▄█ █    █  █ █  █ █▀▀
+▀  ▀ ▀▀▀▀  ▀▀  ▀  ▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+```
 
-[![Alya Code Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
+**Agente de programación para la terminal**
+
+</div>
 
 ---
 
-### Installation
+Alya Code es un agente de programación que vive en tu terminal: lee y escribe
+ficheros, ejecuta comandos, navega por el código y trabaja con el modelo que
+tú elijas.
+
+Es un fork de [opencode](https://github.com/anomalyco/opencode) (MIT),
+rebrandeado y en proceso de migración a infraestructura propia.
+
+## Instalación
 
 ```bash
-# YOLO
-curl -fsSL https://opencode.ai/install | bash
-
-# Package managers
-npm i -g alya-code-ai@latest        # or bun/pnpm/yarn
-scoop install alya-code             # Windows
-choco install alya-code             # Windows
-brew install anomalyco/tap/alya-code # macOS and Linux (recommended, always up to date)
-brew install alya-code              # macOS and Linux (official brew formula, updated less)
-sudo pacman -S alya-code            # Arch Linux (Stable)
-paru -S alya-code-bin               # Arch Linux (Latest from AUR)
-mise use -g alya-code               # Any OS
-nix run nixpkgs#alya-code           # or github:anomalyco/alya-code for latest dev branch
+git clone https://github.com/anyer097-collab/alya-code
+cd alya-code
+bun install
+bun dev
 ```
 
-> [!TIP]
-> Remove versions older than 0.1.x before installing.
+Requiere [Bun](https://bun.sh). Para que los temas se vean bien, la terminal
+debe soportar **truecolor** (24 bits): comprueba con `echo $COLORTERM`.
 
-### Desktop App (BETA)
+## Tema Alya
 
-Alya Code is also available as a desktop application. Download directly from the [releases page](https://github.com/anyer097-collab/alya-code/releases) or [alya-code.ai/download](https://opencode.ai/download).
+Incluye el tema `alya`, una paleta sakura con rosa `#ff8fc7` de primario y
+violeta `#c9a0ff` de acento, con variantes clara y oscura.
 
-| Platform              | Download                           |
-| --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `alya-code-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `alya-code-desktop-mac-x64.dmg`     |
-| Windows               | `alya-code-desktop-windows-x64.exe` |
-| Linux                 | `.deb`, `.rpm`, or `.AppImage`     |
-
-```bash
-# macOS (Homebrew)
-brew install --cask alya-code-desktop
-# Windows (Scoop)
-scoop bucket add extras; scoop install extras/alya-code-desktop
+```
+/theme alya
 ```
 
-#### Installation Directory
+Hay 37 temas más heredados de upstream (tokyonight, catppuccin, gruvbox,
+nord, kanagawa…).
 
-The install script respects the following priority order for the installation path:
+## Configuración
 
-1. `$ALYA_CODE_INSTALL_DIR` - Custom installation directory
-2. `$XDG_BIN_DIR` - XDG Base Directory Specification compliant path
-3. `$HOME/bin` - Standard user binary directory (if it exists or can be created)
-4. `$HOME/.alya-code/bin` - Default fallback
+| | |
+|---|---|
+| Fichero | `alya-code.json` |
+| Config de usuario | `~/.config/alya-code/` |
+| Variables | `ALYA_CODE_*` |
+| Paquetes | `@alya-code/*` |
 
-```bash
-# Examples
-ALYA_CODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
-```
+## Estado del rebrand
 
-### Agents
+**Fase 1 — completada.** 40.073 sustituciones en 2.714 ficheros, 56 ficheros
+y carpetas renombrados. Verificado con `bun install` y `bun run typecheck`
+en GitHub Codespaces: **cero errores de sintaxis**. Los 3 errores de tipos que
+quedan (`TS7006` en `stats-app`) vienen de upstream y están en ficheros que el
+rebrand no tocó.
 
-Alya Code includes two built-in agents you can switch between with the `Tab` key.
+**Fase 2 — pendiente.** Quedan ~5.100 referencias a `opencode.ai`, que **no
+son texto sino servicios reales**:
 
-- **build** - Default, full-access agent for development work
-- **plan** - Read-only agent for analysis and code exploration
-  - Denies file edits by default
-  - Asks permission before running bash commands
-  - Ideal for exploring unfamiliar codebases or planning changes
+| Servicio | Para qué | Reemplazo previsto |
+|---|---|---|
+| `opencode.ai/config.json` | catálogo remoto de modelos | Worker propio |
+| `opencode.ai/zen/v1/*` | pasarela LLM | Alya Servers |
+| `api.opencode.ai` | autenticación | propio o eliminar |
 
-Also included is a **general** subagent for complex searches and multistep tasks.
-This is used internally and can be invoked using `@general` in messages.
+Renombrarlas sin sustituir el servicio dejaría la app apuntando a un dominio
+inexistente, así que se tratan aparte.
 
-Learn more about [agents](https://opencode.ai/docs/agents).
+## Cosas que aprendimos rebrandeando
 
-### Documentation
+Tres bugs que un `sed` ciego habría dejado pasar y que solo aparecieron al
+compilar:
 
-For more info on how to configure Alya Code, [**head over to our docs**](https://opencode.ai/docs).
+1. **Paquetes npm de terceros.** `opencode-gitlab-auth`, `opencode-poe-auth` y
+   `@gitlab/opencode-gitlab-auth` están publicados en npm con ese nombre. Al
+   renombrarlos, `bun install` fallaba con 404.
+2. **Espacios en identificadores.** `OpenCode` → `Alya Code` generaba
+   `import { Alya Code }`, sintaxis inválida. Se corrige a `AlyaCode` solo en
+   zonas de código, enmascarando antes cadenas y comentarios para no estropear
+   el texto visible.
+3. **Guiones en identificadores.** `const opencode = …` → `const alya-code = …`
+   tampoco es válido. 306 casos en 76 ficheros.
 
-### Contributing
+El script está en `rebrand.py` (en el workspace del proyecto), es idempotente
+y protege URLs y paquetes externos.
 
-If you're interested in contributing to Alya Code, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
+## Licencia
 
-### Building on Alya Code
-
-If you are working on a project that's related to Alya Code and is using "alya-code" as part of its name, for example "alya-code-dashboard" or "alya-code-mobile", please add a note to your README to clarify that it is not built by the Alya Code team and is not affiliated with us in any way.
-
----
-
-**Join our community** [Discord](https://discord.gg/alya-code) | [X.com](https://x.com/alya-code)
+MIT, heredada de opencode. Ver [LICENSE](./LICENSE).
