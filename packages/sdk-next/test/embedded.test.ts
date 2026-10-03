@@ -10,13 +10,13 @@ test("embedded client uses the real router and handlers", async () => {
   const directory = await mkdtemp(join(tmpdir(), "alya-code-embedded-"))
   const database = Flag.ALYA_CODE_DB
   Flag.ALYA_CODE_DB = join(directory, "alya-code.sqlite")
-  const { AbsolutePath, Agent, Location, Model, Alya Code, Prompt, Provider, Session, Tool } = await import("../src")
+  const { AbsolutePath, Agent, Location, Model, AlyaCode, Prompt, Provider, Session, Tool } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
   const model = Model.Ref.make({ id: Model.ID.make("embedded"), providerID: Provider.ID.make("test") })
 
   try {
     const program = Effect.gen(function* () {
-      const alya-code = yield* Alya Code.create()
+      const alya-code = yield* AlyaCode.create()
       yield* alya-code.tools.register({
         embedded_tool: Tool.make({
           description: "Embedded test tool",
@@ -108,12 +108,12 @@ test("Location-owned runner events reach the ready global client", async () => {
   const directory = await mkdtemp(join(tmpdir(), "alya-code-embedded-events-"))
   const database = Flag.ALYA_CODE_DB
   Flag.ALYA_CODE_DB = join(directory, "alya-code.sqlite")
-  const { AbsolutePath, Location, Alya Code, Prompt, Session } = await import("../src")
+  const { AbsolutePath, Location, AlyaCode, Prompt, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const program = Effect.gen(function* () {
-      const alya-code = yield* Alya Code.create()
+      const alya-code = yield* AlyaCode.create()
       const connected = yield* Latch.make(false)
       const prompted = yield* Deferred.make<AlyaCodeEvent>()
       yield* alya-code.events.subscribe().pipe(
@@ -147,13 +147,13 @@ test("independent embedded hosts do not share live notifications", async () => {
   const directory = await mkdtemp(join(tmpdir(), "alya-code-embedded-hosts-"))
   const database = Flag.ALYA_CODE_DB
   Flag.ALYA_CODE_DB = join(directory, "alya-code.sqlite")
-  const { AbsolutePath, Agent, Location, Alya Code, Session } = await import("../src")
+  const { AbsolutePath, Agent, Location, AlyaCode, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const program = Effect.gen(function* () {
-      const first = yield* Alya Code.create()
-      const second = yield* Alya Code.create()
+      const first = yield* AlyaCode.create()
+      const second = yield* AlyaCode.create()
       const firstReady = yield* Latch.make(false)
       const secondReady = yield* Latch.make(false)
       const firstEvent = yield* Latch.make(false)
@@ -190,18 +190,18 @@ test("embedded client is available as a Layer service", async () => {
   const directory = await mkdtemp(join(tmpdir(), "alya-code-embedded-layer-"))
   const database = Flag.ALYA_CODE_DB
   Flag.ALYA_CODE_DB = join(directory, "alya-code.sqlite")
-  const { AbsolutePath, Location, Alya Code, Session } = await import("../src")
+  const { AbsolutePath, Location, AlyaCode, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const created = await Effect.runPromise(
       Effect.gen(function* () {
-        const alya-code = yield* Alya Code.Service
+        const alya-code = yield* AlyaCode.Service
         return yield* alya-code.sessions.create({
           id: sessionID,
           location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
         })
-      }).pipe(Effect.provide(Alya Code.layer), Effect.scoped),
+      }).pipe(Effect.provide(AlyaCode.layer), Effect.scoped),
     )
 
     expect(created.id).toBe(sessionID)

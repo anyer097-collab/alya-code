@@ -50,10 +50,10 @@ export const InviteEmail = ({
             </Row>
 
             <Section style={{ padding: `${unit * 2}px 0 0 0` }}>
-              <Text style={headingText}>Join your team's Alya Code workspace</Text>
+              <Text style={headingText}>Join your team's AlyaCode workspace</Text>
               <Text style={contentText}>
                 You have been invited by <Span style={contentHighlightText}>{inviter}</Span> to join the{" "}
-                <Span style={contentHighlightText}>{workspaceName}</Span> workspace on Alya Code.
+                <Span style={contentHighlightText}>{workspaceName}</Span> workspace on AlyaCode.
               </Text>
             </Section>
 

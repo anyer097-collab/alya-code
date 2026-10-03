@@ -1,9 +1,9 @@
 // @ts-nocheck
 
-import { Alya Code } from "@alya-code/core"
+import { AlyaCode } from "@alya-code/core"
 import { ReadTool } from "@alya-code/core/tools"
 
-const alya-code = Alya Code.make({})
+const alya-code = AlyaCode.make({})
 
 alya-code.tool.add(ReadTool)
 

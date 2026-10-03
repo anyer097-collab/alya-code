@@ -371,7 +371,7 @@ function ApiMethod(props: ApiMethodProps) {
           alya-code: (
             <box gap={1}>
               <text fg={theme.textMuted}>
-                Alya Code Zen gives you access to all the best coding models at the cheapest prices with a single API
+                AlyaCode Zen gives you access to all the best coding models at the cheapest prices with a single API
                 key.
               </text>
               <text fg={theme.text}>
@@ -382,7 +382,7 @@ function ApiMethod(props: ApiMethodProps) {
           "alya-code-go": (
             <box gap={1}>
               <text fg={theme.textMuted}>
-                Alya Code Go is a $10 per month subscription that provides reliable access to popular open coding models
+                AlyaCode Go is a $10 per month subscription that provides reliable access to popular open coding models
                 with generous usage limits.
               </text>
               <text fg={theme.text}>

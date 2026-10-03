@@ -1,4 +1,4 @@
-import { Alya Code } from "@alya-code/client/effect"
+import { AlyaCode } from "@alya-code/client/effect"
 import { AppNodeBuilder } from "@alya-code/core/effect/app-node-builder"
 import { LayerNode } from "@alya-code/core/effect/layer-node"
 import { PermissionSaved } from "@alya-code/core/permission/saved"
@@ -32,7 +32,7 @@ export const create = Effect.fn("Alya Code.create")(function* () {
   const fetch = Object.assign((input: RequestInfo | URL, init?: RequestInit) => web.handler(new Request(input, init)), {
     preconnect: () => undefined,
   }) satisfies typeof globalThis.fetch
-  const client = yield* Alya Code.make({ baseUrl: "http://alya-code.local" }).pipe(
+  const client = yield* AlyaCode.make({ baseUrl: "http://alya-code.local" }).pipe(
     Effect.provide(FetchHttpClient.layer),
     Effect.provideService(FetchHttpClient.Fetch, fetch),
   )

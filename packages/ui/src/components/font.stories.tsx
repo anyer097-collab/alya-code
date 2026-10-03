@@ -41,8 +41,8 @@ export const Basic = {
   render: () => (
     <div style={{ display: "grid", gap: "8px" }}>
       <mod.Font />
-      <div style={{ "font-family": "var(--font-family-sans)" }}>Alya Code Sans Sample</div>
-      <div style={{ "font-family": "var(--font-family-mono)" }}>Alya Code Mono Sample</div>
+      <div style={{ "font-family": "var(--font-family-sans)" }}>AlyaCode Sans Sample</div>
+      <div style={{ "font-family": "var(--font-family-mono)" }}>AlyaCode Mono Sample</div>
     </div>
   ),
 }

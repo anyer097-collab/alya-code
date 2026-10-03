@@ -160,17 +160,17 @@ export function findDrift(source: Dictionary, target: Dictionary, locale?: Local
 
 export function sessionIDFromEvents(output: string) {
   const match = output.match(/"sessionID"\s*:\s*"([^"]+)"/)
-  if (!match?.[1]) throw new Error("Alya Code did not report a session ID.")
+  if (!match?.[1]) throw new Error("AlyaCode did not report a session ID.")
   return match[1]
 }
 
 export function sessionModels(value: unknown) {
   if (!isRecord(value) || !Array.isArray(value.messages))
-    throw new Error("Alya Code returned an invalid session export.")
+    throw new Error("AlyaCode returned an invalid session export.")
   return value.messages.flatMap((message) => {
     if (!isRecord(message) || !isRecord(message.info) || message.info.role !== "assistant") return []
     if (typeof message.info.providerID !== "string" || typeof message.info.modelID !== "string") {
-      throw new Error("Alya Code session export omitted the assistant model.")
+      throw new Error("AlyaCode session export omitted the assistant model.")
     }
     return [
       {

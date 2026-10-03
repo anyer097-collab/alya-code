@@ -1,4 +1,4 @@
-export * as Alya Code from "./alya-code"
+export * as AlyaCode from "./alya-code"
 export * as Tool from "./tool"
 
 export { ClientError } from "@alya-code/client/effect"

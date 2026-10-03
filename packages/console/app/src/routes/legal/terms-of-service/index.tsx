@@ -11,7 +11,7 @@ export default function TermsOfService() {
   const language = useLanguage()
   return (
     <main data-page="legal">
-      <Title>Alya Code | Terms of Service</Title>
+      <Title>AlyaCode | Terms of Service</Title>
       <LocaleLinks path="/legal/terms-of-service" />
       <Meta name="description" content="Alya Code terms of service" />
       <div data-component="container">
@@ -24,8 +24,8 @@ export default function TermsOfService() {
               <p class="effective-date">Effective date: Aug 15, 2026</p>
 
               <p>
-                Welcome to Alya Code. Please read on to learn the rules and restrictions that govern your use of
-                Alya Code&apos;s website, inference product and hosted software offering (the "Services"). If you have
+                Welcome to AlyaCode. Please read on to learn the rules and restrictions that govern your use of
+                AlyaCode&apos;s website, inference product and hosted software offering (the "Services"). If you have
                 any questions, comments, or concerns regarding these terms or the Services, please contact us at:
               </p>
 
@@ -71,12 +71,12 @@ export default function TermsOfService() {
                 RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION.
               </p>
 
-              <h2 id="what-is-alya-code">What is Alya Code?</h2>
+              <h2 id="what-is-alya-code">What is AlyaCode?</h2>
               <p>
-                Alya Code is an AI-powered coding agent that helps you write, understand, and modify code using large
+                AlyaCode is an AI-powered coding agent that helps you write, understand, and modify code using large
                 language models. Certain of these large language models are provided by third parties ("Third Party
-                Models") and certain of these models are provided directly by us if you use the Alya Code Zen paid
-                offering ("Zen"). Regardless of whether you use Third Party Models or Zen, Alya Code enables you to
+                Models") and certain of these models are provided directly by us if you use the AlyaCode Zen paid
+                offering ("Zen"). Regardless of whether you use Third Party Models or Zen, AlyaCode enables you to
                 access the functionality of models through a coding agent running within your terminal.
               </p>
 
@@ -144,11 +144,11 @@ export default function TermsOfService() {
               <ol style="list-style-type: lower-alpha;">
                 <li>
                   infringes or violates the intellectual property rights or any other rights of anyone else (including
-                  Alya Code);
+                  AlyaCode);
                 </li>
                 <li>
                   violates any law or regulation, including, without limitation, any applicable export control laws,
-                  privacy laws or any other purpose not reasonably intended by Alya Code;
+                  privacy laws or any other purpose not reasonably intended by AlyaCode;
                 </li>
                 <li>
                   is dangerous, harmful, fraudulent, deceptive, threatening, harassing, defamatory, obscene, or
@@ -229,7 +229,7 @@ export default function TermsOfService() {
               </p>
 
               <p>
-                If you use Alya Code with Third Party Models, then your Content will be subject to the data retention
+                If you use AlyaCode with Third Party Models, then your Content will be subject to the data retention
                 policies of the providers of such Third Party Models. Although we will not retain your Content, we
                 cannot and do not control the retention practices of Third Party Model providers. You should review the
                 terms and conditions applicable to any Third Party Model for more information about the data use and
@@ -239,19 +239,19 @@ export default function TermsOfService() {
               <h2 id="what-about-third-party-models">What about Third Party Models?</h2>
               <p>
                 The Services enable you to access and use Third Party Models, which are not owned or controlled by
-                Alya Code. Your ability to access Third Party Models is contingent on you having API keys or otherwise
+                AlyaCode. Your ability to access Third Party Models is contingent on you having API keys or otherwise
                 having the right to access such Third Party Models.
               </p>
 
               <p>
-                Alya Code has no control over, and assumes no responsibility for, the content, accuracy, privacy
+                AlyaCode has no control over, and assumes no responsibility for, the content, accuracy, privacy
                 policies, or practices of any providers of Third Party Models. We encourage you to read the terms and
                 conditions and privacy policy of each provider of a Third Party Model that you choose to utilize. By
                 using the Services, you release and hold us harmless from any and all liability arising from your use of
                 any Third Party Model.
               </p>
 
-              <h2 id="will-alya-code-ever-change-the-services">Will Alya Code ever change the Services?</h2>
+              <h2 id="will-alya-code-ever-change-the-services">Will AlyaCode ever change the Services?</h2>
               <p>
                 We're always trying to improve our Services, so they may change over time. We may suspend or discontinue
                 any part of the Services, or we may introduce new features or impose limits on certain features or
@@ -393,7 +393,7 @@ export default function TermsOfService() {
               <h3>Assignment</h3>
               <p>
                 You may not assign, delegate or transfer these Terms or your rights or obligations hereunder, or your
-                Services account, in any way (by operation of law or otherwise) without Alya Code's prior written
+                Services account, in any way (by operation of law or otherwise) without AlyaCode's prior written
                 consent. We may transfer, assign, or delegate these Terms and our rights and obligations without
                 consent.
               </p>
@@ -430,8 +430,8 @@ export default function TermsOfService() {
 
               <h4>Costs of Arbitration</h4>
               <p>
-                The Rules will govern payment of all arbitration fees. Alya Code will pay all arbitration fees for claims
-                less than seventy-five thousand ($75,000) dollars. Alya Code will not seek its attorneys' fees and costs
+                The Rules will govern payment of all arbitration fees. AlyaCode will pay all arbitration fees for claims
+                less than seventy-five thousand ($75,000) dollars. AlyaCode will not seek its attorneys' fees and costs
                 in arbitration unless the arbitrator determines that your claim is frivolous.
               </p>
 
@@ -448,10 +448,10 @@ export default function TermsOfService() {
               <h4>Waiver of Jury Trial</h4>
               <p>
                 YOU AND ALYACODE WAIVE ANY CONSTITUTIONAL AND STATUTORY RIGHTS TO GO TO COURT AND HAVE A TRIAL IN FRONT
-                OF A JUDGE OR JURY. You and Alya Code are instead choosing to have claims and disputes resolved by
+                OF A JUDGE OR JURY. You and AlyaCode are instead choosing to have claims and disputes resolved by
                 arbitration. Arbitration procedures are typically more limited, more efficient, and less costly than
                 rules applicable in court and are subject to very limited review by a court. In any litigation between
-                you and Alya Code over whether to vacate or enforce an arbitration award, YOU AND ALYACODE WAIVE ALL
+                you and AlyaCode over whether to vacate or enforce an arbitration award, YOU AND ALYACODE WAIVE ALL
                 RIGHTS TO A JURY TRIAL, and elect instead to have the dispute be resolved by a judge.
               </p>
 
@@ -461,7 +461,7 @@ export default function TermsOfService() {
                 ON AN INDIVIDUAL BASIS AND NOT ON A CLASS BASIS. CLAIMS OF MORE THAN ONE CUSTOMER OR USER CANNOT BE
                 ARBITRATED OR LITIGATED JOINTLY OR CONSOLIDATED WITH THOSE OF ANY OTHER CUSTOMER OR USER. If however,
                 this waiver of class or consolidated actions is deemed invalid or unenforceable, neither you nor
-                Alya Code is entitled to arbitration; instead all claims and disputes will be resolved in a court as set
+                AlyaCode is entitled to arbitration; instead all claims and disputes will be resolved in a court as set
                 forth in (g) below.
               </p>
 
@@ -477,9 +477,9 @@ export default function TermsOfService() {
               <h4>Exclusive Venue</h4>
               <p>
                 If you send the opt-out notice in (f), and/or in any circumstances where the foregoing arbitration
-                agreement permits either you or Alya Code to litigate any dispute arising out of or relating to the
+                agreement permits either you or AlyaCode to litigate any dispute arising out of or relating to the
                 subject matter of these Terms in court, then the foregoing arbitration agreement will not apply to
-                either party, and both you and Alya Code agree that any judicial proceeding (other than small claims
+                either party, and both you and AlyaCode agree that any judicial proceeding (other than small claims
                 actions) will be brought in the state or federal courts located in, respectively, New Castle County,
                 Delaware, or the federal district in which that county falls.
               </p>
@@ -489,27 +489,27 @@ export default function TermsOfService() {
                 If the prohibition against class actions and other claims brought on behalf of third parties contained
                 above is found to be unenforceable, then all of the preceding language in this Arbitration Agreement
                 section will be null and void. This arbitration agreement will survive the termination of your
-                relationship with Alya Code.
+                relationship with AlyaCode.
               </p>
 
               <h3>Miscellaneous</h3>
               <p>
                 You will be responsible for paying, withholding, filing, and reporting all taxes, duties, and other
                 governmental assessments associated with your activity in connection with the Services, provided that
-                the Alya Code may, in its sole discretion, do any of the foregoing on your behalf or for itself as it
+                the AlyaCode may, in its sole discretion, do any of the foregoing on your behalf or for itself as it
                 sees fit. The failure of either you or us to exercise, in any way, any right herein shall not be deemed
                 a waiver of any further rights hereunder. If any provision of these Terms are found to be unenforceable
                 or invalid, that provision will be limited or eliminated, to the minimum extent necessary, so that these
-                Terms shall otherwise remain in full force and effect and enforceable. You and Alya Code agree that these
-                Terms are the complete and exclusive statement of the mutual understanding between you and Alya Code, and
+                Terms shall otherwise remain in full force and effect and enforceable. You and AlyaCode agree that these
+                Terms are the complete and exclusive statement of the mutual understanding between you and AlyaCode, and
                 that these Terms supersede and cancel all previous written and oral agreements, communications and other
                 understandings relating to the subject matter of these Terms. You hereby acknowledge and agree that you
-                are not an employee, agent, partner, or joint venture of Alya Code, and you do not have any authority of
-                any kind to bind Alya Code in any respect whatsoever.
+                are not an employee, agent, partner, or joint venture of AlyaCode, and you do not have any authority of
+                any kind to bind AlyaCode in any respect whatsoever.
               </p>
 
               <p>
-                Except as expressly set forth in the section above regarding the arbitration agreement, you and Alya Code
+                Except as expressly set forth in the section above regarding the arbitration agreement, you and AlyaCode
                 agree there are no third-party beneficiaries intended under these Terms.
               </p>
             </article>

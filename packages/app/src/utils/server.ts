@@ -1,5 +1,5 @@
 import { createAlyaCodeClient } from "@alya-code/sdk/v2/client"
-import { Alya Code, type AlyaCodeClient } from "@alya-code/client/promise"
+import { AlyaCode, type AlyaCodeClient } from "@alya-code/client/promise"
 import type { ServerConnection } from "@/context/server"
 import { decode64 } from "@/utils/base64"
 
@@ -45,7 +45,7 @@ export function createApiForServer(input: {
   server: ServerConnection.HttpBase
   fetch?: typeof globalThis.fetch
 }): AlyaCodeClient {
-  return Alya Code.make({
+  return AlyaCode.make({
     baseUrl: input.server.url,
     fetch: input.fetch,
     headers: input.server.password

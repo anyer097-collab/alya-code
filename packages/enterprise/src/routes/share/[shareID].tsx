@@ -185,7 +185,7 @@ export default function () {
           return (
             <>
               <Show when={info().title}>
-                <Title>{info().title} | Alya Code</Title>
+                <Title>{info().title} | AlyaCode</Title>
               </Show>
               <Meta name="description" content="alya-code - The AI coding agent built for the terminal." />
               <Meta property="og:image" content={ogImage()} />

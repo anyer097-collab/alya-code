@@ -1,9 +1,9 @@
 import { Effect, Stream } from "effect"
 import { HttpClient } from "effect/unstable/http"
-import { ClientError, Alya Code } from "./generated"
+import { ClientError, AlyaCode } from "./generated"
 import { Missing } from "./fixture"
 
-export const program = Alya Code.make().pipe(
+export const program = AlyaCode.make().pipe(
   Effect.map((client) => {
     const health = client.session.health()
     const list = client.session.list()
