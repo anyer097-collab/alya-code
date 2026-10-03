@@ -94,3 +94,55 @@ y protege URLs y paquetes externos.
 ## Licencia
 
 MIT, heredada de opencode. Ver [LICENSE](./LICENSE).
+
+## Pool de Alya Servers
+
+Alya Code usa por defecto los **Alya Servers**: siete workers de Cloudflare con
+API compatible con OpenAI, multimodales y con function calling nativo.
+
+```json
+{
+  "provider": {
+    "alya": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Alya Server",
+      "options": { "baseURL": "https://alya-server7.anyer-alya5.workers.dev/v1" }
+    }
+  },
+  "model": "alya/alya"
+}
+```
+
+### Catálogo que se actualiza solo
+
+Los servidores están en [`alya-servers.json`](./alya-servers.json). Alya Code lo
+descarga **una vez al día** y lo fusiona con los tuyos:
+
+```
+local    los que añadiste tú      ← siempre primero, nunca se pisan
+remote   el catálogo del repo     ← refresco cada 24 h
+builtin  respaldo empotrado       ← solo si no hay red ni caché
+```
+
+Para sumar un servidor al pool de todos, se añade al JSON y se abre un PR: el
+resto de clientes lo recoge al día siguiente sin actualizar nada.
+
+### Comandos
+
+```bash
+alya-code servers              # listar y ver de dónde sale cada uno
+alya-code servers add <url>    # añadir uno solo en tu máquina
+alya-code servers rm <url>     # quitarlo
+alya-code servers refresh      # forzar la descarga del catálogo
+alya-code servers check        # latencia y estado de cada uno
+```
+
+`add` rechaza una URL que no exponga `GET /v1/models`, así no se cuela un
+servidor que no habla el protocolo.
+
+### Salud y reparto
+
+Cada cuenta de Cloudflare aporta 10.000 neuronas al día, así que siete suman
+**70.000**. Cuando una se agota, el cliente la aparta **1 hora** y pasa a la
+siguiente sin que lo notes; un fallo puntual la aparta solo 2 minutos. Si todas
+estuvieran en espera, se reintenta igual: mejor eso que no responder.

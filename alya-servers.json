@@ -1,0 +1,50 @@
+{
+  "$comment": "Pool de Alya Servers. Alya Code lee este fichero una vez al día desde el repo y lo fusiona con tu configuración local. Para sumar un servidor basta con añadirlo aquí y abrir un PR, o usar 'alya-code servers add <url>' para añadirlo solo en tu máquina.",
+  "version": 1,
+  "updated": "2026-10-03",
+  "refresh_hours": 24,
+  "servers": [
+    {
+      "id": "alya-server1",
+      "url": "https://alya-server1.anyer097.workers.dev",
+      "region": "auto",
+      "enabled": true
+    },
+    {
+      "id": "alya-server2",
+      "url": "https://alya-server2.anyerjrsenior.workers.dev",
+      "region": "auto",
+      "enabled": true
+    },
+    {
+      "id": "alya-server3",
+      "url": "https://alya-server3.anyer-alya.workers.dev",
+      "region": "auto",
+      "enabled": true
+    },
+    {
+      "id": "alya-server4",
+      "url": "https://alya-server4.anyer-alya2.workers.dev",
+      "region": "auto",
+      "enabled": true
+    },
+    {
+      "id": "alya-server5",
+      "url": "https://alya-server5.anyer-alya3.workers.dev",
+      "region": "auto",
+      "enabled": true
+    },
+    {
+      "id": "alya-server6",
+      "url": "https://alya-server6.anyer-alya4.workers.dev",
+      "region": "auto",
+      "enabled": true
+    },
+    {
+      "id": "alya-server7",
+      "url": "https://alya-server7.anyer-alya5.workers.dev",
+      "region": "auto",
+      "enabled": true
+    }
+  ]
+}

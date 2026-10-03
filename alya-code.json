@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anyer097-collab/alya-code/main/config.schema.json",
+  "provider": {
+    "alya": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Alya Server",
+      "options": {
+        "baseURL": "https://alya-server7.anyer-alya5.workers.dev/v1"
+      },
+      "models": {
+        "alya": {
+          "name": "Alya (Llama 4 Scout · multimodal)"
+        },
+        "alya-fast": {
+          "name": "Alya Fast (Llama 3.3 70B)"
+        },
+        "alya-vision": {
+          "name": "Alya Vision"
+        }
+      }
+    }
+  },
+  "model": "alya/alya"
+}
