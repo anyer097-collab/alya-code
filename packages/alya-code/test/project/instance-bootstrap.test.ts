@@ -52,7 +52,7 @@ const bootstrapFixture = Effect.gen(function* () {
     Bun.write(
       path.join(dir, "alya-code.json"),
       JSON.stringify({
-        $schema: "https://opencode.ai/config.json",
+        $schema: "https://alya-code.anyer097.workers.dev/config.json",
         plugin: [pathToFileURL(pluginFile).href],
       }),
     ),

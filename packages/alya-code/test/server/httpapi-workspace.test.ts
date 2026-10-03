@@ -399,7 +399,7 @@ describe("workspace HttpApi", () => {
             "content-type": "application/json",
             "x-alya-code-workspace": "internal",
           },
-          body: JSON.stringify({ $schema: "https://opencode.ai/config.json" }),
+          body: JSON.stringify({ $schema: "https://alya-code.anyer097.workers.dev/config.json" }),
         })
 
         const responseBody = yield* response.text
@@ -416,7 +416,7 @@ describe("workspace HttpApi", () => {
               "content-type": "application/json",
               "x-target-auth": "secret",
             }),
-            body: JSON.stringify({ $schema: "https://opencode.ai/config.json" }),
+            body: JSON.stringify({ $schema: "https://alya-code.anyer097.workers.dev/config.json" }),
           },
         ])
         expect(forwarded[0]?.headers).not.toHaveProperty("x-alya-code-directory")

@@ -41,7 +41,7 @@ function withProject<A, E, R>(source: string, self: Effect.Effect<A, E, R>) {
             path.join(test.directory, "alya-code.json"),
             JSON.stringify(
               {
-                $schema: "https://opencode.ai/config.json",
+                $schema: "https://alya-code.anyer097.workers.dev/config.json",
                 plugin: [pathToFileURL(file).href],
               },
               null,

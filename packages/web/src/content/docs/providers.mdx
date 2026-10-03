@@ -35,7 +35,7 @@ You can customize the base URL for any provider by setting the `baseURL` option.
 
 ```json title="alya-code.json" {6}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -54,7 +54,7 @@ You can hide specific models from the `/models` picker for a provider using the 
 
 ```json title="alya-code.json" {6}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "anthropic": {
       "blacklist": ["claude-opus-4-20250514"]
@@ -67,7 +67,7 @@ The inverse `whitelist` option hides every model except the ones listed.
 
 ```json title="alya-code.json" {6}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "anthropic": {
       "whitelist": ["claude-sonnet-4-20250514"]
@@ -235,7 +235,7 @@ To use Amazon Bedrock with Alya Code:
 
    ```json title="alya-code.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -264,7 +264,7 @@ To use Amazon Bedrock with Alya Code:
 
    ```json title="alya-code.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -313,7 +313,7 @@ For custom inference profiles, use the model and provider name in the key and se
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -376,7 +376,7 @@ You can configure alya-code to use local models through [Atomic Chat](https://at
 
 ```json title="alya-code.json" "atomic-chat" {5, 6, 8, 10-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "atomic-chat": {
       "npm": "@ai-sdk/openai-compatible",
@@ -473,7 +473,7 @@ Alya Code does not query Azure management APIs or discover deployments. Select a
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "azure": {
       "models": {
@@ -640,7 +640,7 @@ Cloudflare AI Gateway lets you access models from OpenAI, Anthropic, Workers AI,
 
    ```json title="alya-code.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "cloudflare-ai-gateway": {
          "models": {
@@ -907,7 +907,7 @@ Selecting a router model is a drop-in replacement for any other model — Alya C
 
    ```json title="alya-code.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "edenai": {
          "options": {
@@ -1046,7 +1046,7 @@ to only use your own GitLab-hosted instance, add the following to your
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -1110,7 +1110,7 @@ Customize through `alya-code.json`:
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -1141,7 +1141,7 @@ To access GitLab tools (merge requests, issues, pipelines, CI/CD, etc.):
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "plugin": ["alya-code-gitlab-plugin"]
 }
 ```
@@ -1351,7 +1351,7 @@ Here's [Helicone's Model Directory](https://helicone.ai/models), you'll need thi
 
 ```jsonc title="~/.config/alya-code/alya-code.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1379,7 +1379,7 @@ Helicone supports custom headers for features like caching, user tracking, and s
 
 ```jsonc title="~/.config/alya-code/alya-code.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1433,7 +1433,7 @@ You can configure alya-code to use local models through [llama.cpp's](https://gi
 
 ```json title="alya-code.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1500,7 +1500,7 @@ You can configure alya-code to use local models through LM Studio.
 
 ```json title="alya-code.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1641,7 +1641,7 @@ You can also use NVIDIA models locally via [NVIDIA NIM](https://docs.nvidia.com/
 
 ```json title="alya-code.json" {6}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "nvidia": {
       "options": {
@@ -1699,7 +1699,7 @@ Ollama can automatically configure itself for Alya Code. See the [Ollama integra
 
 ```json title="alya-code.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1865,7 +1865,7 @@ Alya Code Zen is a list of tested and verified models provided by the Alya Code 
 
    ```json title="alya-code.json" {6}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1880,7 +1880,7 @@ Alya Code Zen is a list of tested and verified models provided by the Alya Code 
 
    ```json title="alya-code.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1929,7 +1929,7 @@ Alya Code Zen is a list of tested and verified models provided by the Alya Code 
 
    ```json title="alya-code.json" {6}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "llmgateway": {
          "models": {
@@ -1944,7 +1944,7 @@ Alya Code Zen is a list of tested and verified models provided by the Alya Code 
 
    ```json title="alya-code.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "llmgateway": {
          "models": {
@@ -2001,7 +2001,7 @@ If your organization runs a Poolside deployment, configure it as a custom OpenAI
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "poolside-deployment": {
       "npm": "@ai-sdk/openai-compatible",
@@ -2300,7 +2300,7 @@ The model catalog is provided automatically. A minimal `alya-code.json` is all t
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "model": "snowflake-cortex/claude-sonnet-4-6",
   "small_model": "snowflake-cortex/claude-haiku-4-5"
 }
@@ -2393,7 +2393,7 @@ You can also customize models through your alya-code config. Here's an example o
 
 ```json title="alya-code.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -2527,7 +2527,7 @@ Alya Code refreshes the OAuth access token automatically. Any Grok or X Premium 
 
    ```json title="alya-code.json" {6}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -2595,7 +2595,7 @@ You can use any OpenAI-compatible provider with alya-code. Most modern AI provid
 
    ```json title="alya-code.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://alya-code.anyer097.workers.dev/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -2633,7 +2633,7 @@ Here's an example setting the `apiKey`, `headers`, and model `limit` options.
 
 ```json title="alya-code.json" {9,11,17-20}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://alya-code.anyer097.workers.dev/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",
