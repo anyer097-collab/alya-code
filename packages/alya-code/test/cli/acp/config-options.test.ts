@@ -15,10 +15,10 @@ import {
 describe("alya-code acp config option subprocess", () => {
   cliIt.live(
     'model option is listed with category "model"',
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
@@ -33,10 +33,10 @@ describe("alya-code acp config option subprocess", () => {
 
   cliIt.live(
     "model switch updates currentValue",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
@@ -60,10 +60,10 @@ describe("alya-code acp config option subprocess", () => {
 
   cliIt.live(
     'effort option is listed with category "thought_level" when selected model supports variants',
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
@@ -78,10 +78,10 @@ describe("alya-code acp config option subprocess", () => {
 
   cliIt.live(
     "effort switch updates currentValue",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)

@@ -171,7 +171,7 @@ export const AlyaCodePlugin = define<HttpClient.HttpClient | EventV2.Service | S
         }
       }
 
-      const item = catalog.provider.get(ProviderV2.ID.alya-code)
+      const item = catalog.provider.get(ProviderV2.ID.alyaCode)
       if (!item) return
       const hasKey = Boolean(process.env.ALYA_CODE_API_KEY || connected || item.provider.request.body.apiKey)
       catalog.provider.update(item.provider.id, (provider) => {

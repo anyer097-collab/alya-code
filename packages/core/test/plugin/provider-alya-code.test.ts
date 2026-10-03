@@ -263,7 +263,7 @@ describe("AlyaCodePlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.alya-code),
+            ...ProviderV2.Info.empty(ProviderV2.ID.alyaCode),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -277,8 +277,8 @@ describe("AlyaCodePlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.alya-code)).request.body.apiKey).toBe("public")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.alya-code, ModelV2.ID.make("paid"))).enabled).toBe(false)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID.alyaCode)).request.body.apiKey).toBe("public")
+        expect(required(yield* catalog.model.get(ProviderV2.ID.alyaCode, ModelV2.ID.make("paid"))).enabled).toBe(false)
       }),
     ),
   )
@@ -289,7 +289,7 @@ describe("AlyaCodePlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.alya-code),
+            ...ProviderV2.Info.empty(ProviderV2.ID.alyaCode),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -303,8 +303,8 @@ describe("AlyaCodePlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.alya-code)).request.body.apiKey).toBe("public")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.alya-code, ModelV2.ID.make("free"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID.alyaCode)).request.body.apiKey).toBe("public")
+        expect(required(yield* catalog.model.get(ProviderV2.ID.alyaCode, ModelV2.ID.make("free"))).enabled).toBe(true)
       }),
     ),
   )
@@ -315,7 +315,7 @@ describe("AlyaCodePlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.alya-code),
+            ...ProviderV2.Info.empty(ProviderV2.ID.alyaCode),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -329,8 +329,8 @@ describe("AlyaCodePlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.alya-code)).request.body.apiKey).toBe("public")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.alya-code, ModelV2.ID.make("output-only"))).enabled).toBe(
+        expect(required(yield* catalog.provider.get(ProviderV2.ID.alyaCode)).request.body.apiKey).toBe("public")
+        expect(required(yield* catalog.model.get(ProviderV2.ID.alyaCode, ModelV2.ID.make("output-only"))).enabled).toBe(
           true,
         )
       }),
@@ -343,7 +343,7 @@ describe("AlyaCodePlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.alya-code),
+            ...ProviderV2.Info.empty(ProviderV2.ID.alyaCode),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -357,8 +357,8 @@ describe("AlyaCodePlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.alya-code)).request.body.apiKey).toBeUndefined()
-        expect(required(yield* catalog.model.get(ProviderV2.ID.alya-code, ModelV2.ID.make("paid"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID.alyaCode)).request.body.apiKey).toBeUndefined()
+        expect(required(yield* catalog.model.get(ProviderV2.ID.alyaCode, ModelV2.ID.make("paid"))).enabled).toBe(true)
       }),
     ),
   )
@@ -376,7 +376,7 @@ describe("AlyaCodePlugin", () => {
         })
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.alya-code),
+            ...ProviderV2.Info.empty(ProviderV2.ID.alyaCode),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -390,8 +390,8 @@ describe("AlyaCodePlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.alya-code)).request.body.apiKey).toBeUndefined()
-        expect(required(yield* catalog.model.get(ProviderV2.ID.alya-code, ModelV2.ID.make("paid"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID.alyaCode)).request.body.apiKey).toBeUndefined()
+        expect(required(yield* catalog.model.get(ProviderV2.ID.alyaCode, ModelV2.ID.make("paid"))).enabled).toBe(true)
       }),
     ),
   )
@@ -402,7 +402,7 @@ describe("AlyaCodePlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.alya-code),
+            ...ProviderV2.Info.empty(ProviderV2.ID.alyaCode),
             api: { type: "aisdk", package: "test-provider" },
             request: {
               headers: {},
@@ -422,8 +422,8 @@ describe("AlyaCodePlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.alya-code)).request.body.apiKey).toBe("configured")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.alya-code, ModelV2.ID.make("paid"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID.alyaCode)).request.body.apiKey).toBe("configured")
+        expect(required(yield* catalog.model.get(ProviderV2.ID.alyaCode, ModelV2.ID.make("paid"))).enabled).toBe(true)
       }),
     ),
   )
@@ -457,7 +457,7 @@ describe("AlyaCodePlugin", () => {
   it.effect("prefers gpt-5-nano as the alya-code small model", () =>
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
-      const providerID = ProviderV2.ID.alya-code
+      const providerID = ProviderV2.ID.alyaCode
 
       yield* catalog.transform((catalog) => {
         catalog.provider.update(providerID, () => {})

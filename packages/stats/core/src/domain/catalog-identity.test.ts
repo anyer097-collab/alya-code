@@ -6,7 +6,7 @@ describe("stats catalog identity", () => {
     const identity = catalogIdentity({
       models: { "meituan/longcat-2.5-preview": {} },
       providers: {
-        alya-code: { models: { "longcat-2.5-preview-free": { canonical_model_id: "meituan/longcat-2.5-preview" } } },
+        alyaCode: { models: { "longcat-2.5-preview-free": { canonical_model_id: "meituan/longcat-2.5-preview" } } },
         "alya-code-go": {
           models: { "longcat-2.5-preview-free": { canonical_model_id: "meituan/longcat-2.5-preview" } },
         },
@@ -22,7 +22,7 @@ describe("stats catalog identity", () => {
     const identity = catalogIdentity({
       models: { "lab-a/model": {}, "lab-b/model": {} },
       providers: {
-        alya-code: { models: { "model-free": { canonical_model_id: "lab-a/model" } } },
+        alyaCode: { models: { "model-free": { canonical_model_id: "lab-a/model" } } },
         "alya-code-go": { models: { model: { canonical_model_id: "lab-b/model" } } },
       },
     })
@@ -35,7 +35,7 @@ describe("stats catalog identity", () => {
   test("accepts provider IDs that are already canonical catalog IDs", () => {
     const identity = catalogIdentity({
       models: { "alya-code/direct-model": {} },
-      providers: { alya-code: { models: { "direct-model": {} } } },
+      providers: { alyaCode: { models: { "direct-model": {} } } },
     })
 
     expect(identity.offerings.get("alya-code/direct-model")).toBe("alya-code")
@@ -43,7 +43,7 @@ describe("stats catalog identity", () => {
   })
 
   test("rejects a catalog without published canonical identities", () => {
-    expect(() => catalogIdentity({ models: {}, providers: { alya-code: { models: { model: {} } } } })).toThrow(
+    expect(() => catalogIdentity({ models: {}, providers: { alyaCode: { models: { model: {} } } } })).toThrow(
       "Model catalog has no canonical Alya Code offerings",
     )
   })

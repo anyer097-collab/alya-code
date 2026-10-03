@@ -197,7 +197,7 @@ export async function checkPluginCompatibility(target: string, alyacodeVersion: 
   if (!hit) return
   const engines = hit.json.engines
   if (!isRecord(engines)) return
-  const range = engines.alya-code
+  const range = engines.alyaCode
   if (typeof range !== "string") return
   if (!semver.satisfies(alyacodeVersion, range)) {
     throw new Error(`Plugin requires alya-code ${range} but running ${alyacodeVersion}`)

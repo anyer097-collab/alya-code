@@ -770,7 +770,7 @@ const accountTokenIt = configIt({
     config: () =>
       Effect.succeed(
         Option.some({
-          provider: { alya-code: { options: { apiKey: "{env:ALYA_CODE_CONSOLE_TOKEN}" } } },
+          provider: { alyaCode: { options: { apiKey: "{env:ALYA_CODE_CONSOLE_TOKEN}" } } },
         }),
       ),
     token: () => Effect.succeed(Option.some(AccessToken.make("st_test_token"))),

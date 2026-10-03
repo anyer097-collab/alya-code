@@ -3,7 +3,7 @@ import { Title } from "@solidjs/meta"
 export default function SupportPage() {
   return (
     <main data-page="support">
-      <Title>alya-code support — lookup user</Title>
+      <Title>alyaCode support — lookup user</Title>
       <h1>Lookup user</h1>
 
       <form data-component="lookup" action="/lookup" method="get" target="_blank">

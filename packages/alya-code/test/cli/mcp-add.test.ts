@@ -6,9 +6,9 @@ import { cliIt } from "../lib/cli-process"
 describe("alya-code mcp add (non-interactive subprocess)", () => {
   cliIt.concurrent(
     "adds a remote server with HTTP headers",
-    ({ home, alya-code }) =>
+    ({ home, alyaCode }) =>
       Effect.gen(function* () {
-        const result = yield* alya-code.spawn([
+        const result = yield* alyaCode.spawn([
           "mcp",
           "add",
           "github",
@@ -19,7 +19,7 @@ describe("alya-code mcp add (non-interactive subprocess)", () => {
           "--header",
           "X-Option=one=two",
         ])
-        alya-code.expectExit(result, 0)
+        alyaCode.expectExit(result, 0)
 
         const config = yield* Effect.promise(() =>
           Bun.file(path.join(home, ".config", "alya-code", "alya-code.json")).json(),
@@ -38,9 +38,9 @@ describe("alya-code mcp add (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "adds a local server while preserving argv and environment values",
-    ({ home, alya-code }) =>
+    ({ home, alyaCode }) =>
       Effect.gen(function* () {
-        const result = yield* alya-code.spawn([
+        const result = yield* alyaCode.spawn([
           "mcp",
           "add",
           "local",
@@ -55,7 +55,7 @@ describe("alya-code mcp add (non-interactive subprocess)", () => {
           "--label",
           "two words",
         ])
-        alya-code.expectExit(result, 0)
+        alyaCode.expectExit(result, 0)
 
         const config = yield* Effect.promise(() =>
           Bun.file(path.join(home, ".config", "alya-code", "alya-code.json")).json(),

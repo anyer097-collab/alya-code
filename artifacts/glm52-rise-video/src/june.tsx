@@ -136,7 +136,7 @@ export function JuneTotals() {
             fontWeight: 500,
           }}
         >
-          <div style={{ color: c.ink }}>alya-code.ai/data</div>
+          <div style={{ color: c.ink }}>alyaCode.ai/data</div>
         </div>
       </div>
     </AbsoluteFill>

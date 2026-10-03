@@ -74,8 +74,8 @@ export async function deleteStoreFileIfEmpty(userDataPath: string, name: string)
 }
 
 function storeKind(name: string): StoreKind | undefined {
-  if (/^alya-code\.draft\..+\.dat$/.test(name)) return "draft"
-  if (/^alya-code\.workspace\..+\.dat$/.test(name)) return "workspace"
+  if (/^alyaCode\.draft\..+\.dat$/.test(name)) return "draft"
+  if (/^alyaCode\.workspace\..+\.dat$/.test(name)) return "workspace"
 }
 
 async function isEmptyStore(file: string, size: number) {

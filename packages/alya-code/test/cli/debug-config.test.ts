@@ -23,12 +23,12 @@ const config = {
 }
 
 describe("debug config redaction", () => {
-  cliIt.live("always masks resolved credentials", ({ alya-code }) =>
+  cliIt.live("always masks resolved credentials", ({ alyaCode }) =>
     Effect.gen(function* () {
       const content = JSON.stringify({ provider: config.provider })
       const env = { ALYA_CODE_CONFIG_CONTENT: content }
-      const result = yield* alya-code.spawn(["debug", "config"], { env })
-      alya-code.expectExit(result, 0, "debug config")
+      const result = yield* alyaCode.spawn(["debug", "config"], { env })
+      alyaCode.expectExit(result, 0, "debug config")
       expect(JSON.parse(result.stdout).provider.example.options).toMatchObject({
         apiKey: "***",
         timeout: 1200,

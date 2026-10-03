@@ -154,7 +154,7 @@ test("probes addable distros in parallel before checking Alya Code", async () =>
   persistedServers = []
   const started: string[] = []
   const release = new Map<string, () => void>()
-  const alya-code: string[] = []
+  const alyaCode: string[] = []
   const controller = createWslServersController("1.16.2", async () => new Promise<never>(() => undefined), {
     ...testControllerOptions(),
     probeDistro: async (distro) => {
@@ -163,7 +163,7 @@ test("probes addable distros in parallel before checking Alya Code", async () =>
       return { name: distro, canExecute: true, hasBash: true, hasCurl: true, error: null }
     },
     resolveAlyaCode: async (distro) => {
-      alya-code.push(distro)
+      alyaCode.push(distro)
       return "/home/me/.alya-code/bin/alya-code"
     },
   })
@@ -171,19 +171,19 @@ test("probes addable distros in parallel before checking Alya Code", async () =>
   const task = controller.probeAddable(["Debian", "Ubuntu"])
   await waitFor(() => started.length === 2)
   expect(started).toEqual(["Debian", "Ubuntu"])
-  expect(alya-code).toEqual([])
+  expect(alyaCode).toEqual([])
   release.get("Debian")?.()
   release.get("Ubuntu")?.()
   await task
 
   expect(Object.keys(controller.getState().distroProbes)).toEqual(["Debian", "Ubuntu"])
-  expect(alya-code).toEqual(["Debian", "Ubuntu"])
+  expect(alyaCode).toEqual(["Debian", "Ubuntu"])
   expect(Object.keys(controller.getState().alyacodeChecks)).toEqual(["Debian", "Ubuntu"])
 })
 
 test("does not check Alya Code in addable distros that cannot execute commands", async () => {
   persistedServers = []
-  const alya-code: string[] = []
+  const alyaCode: string[] = []
   const controller = createWslServersController("1.16.2", async () => new Promise<never>(() => undefined), {
     ...testControllerOptions(),
     probeDistro: async (distro) => ({
@@ -194,7 +194,7 @@ test("does not check Alya Code in addable distros that cannot execute commands",
       error: distro === "Debian" ? null : "Open Ubuntu once to finish setup",
     }),
     resolveAlyaCode: async (distro) => {
-      alya-code.push(distro)
+      alyaCode.push(distro)
       return "/home/me/.alya-code/bin/alya-code"
     },
   })
@@ -202,7 +202,7 @@ test("does not check Alya Code in addable distros that cannot execute commands",
   await controller.probeAddable(["Debian", "Ubuntu"])
 
   expect(Object.keys(controller.getState().distroProbes)).toEqual(["Debian", "Ubuntu"])
-  expect(alya-code).toEqual(["Debian"])
+  expect(alyaCode).toEqual(["Debian"])
   expect(Object.keys(controller.getState().alyacodeChecks)).toEqual(["Debian"])
 })
 

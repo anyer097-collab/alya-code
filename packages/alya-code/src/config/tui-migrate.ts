@@ -27,8 +27,8 @@ interface MigrateInput {
  * skips only locations where a tui.json already exists.
  */
 export async function migrateTuiConfig(input: MigrateInput) {
-  const alya-code = await alyacodeFiles(input)
-  for (const file of alya-code) {
+  const alyaCode = await alyacodeFiles(input)
+  for (const file of alyaCode) {
     const source = await Filesystem.readText(file).catch(() => undefined)
     if (!source) continue
     const errors: JsoncParseError[] = []

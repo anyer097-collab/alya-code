@@ -161,7 +161,7 @@ const RECORDED_SCENARIOS = [
   {
     id: "alya-code-proxy",
     name: "Alya Code proxy",
-    providerID: ProviderV2.ID.alya-code,
+    providerID: ProviderV2.ID.alyaCode,
     modelID: "gpt-5.2-codex",
     cassette: "session/native-zen-tool-loop",
     protocol: "openai-responses",
@@ -169,7 +169,7 @@ const RECORDED_SCENARIOS = [
     canRecord: () => Boolean(process.env.ALYA_CODE_RECORD_CONSOLE_TOKEN && process.env.ALYA_CODE_RECORD_ZEN_ORG_ID),
     config: (model) =>
       providerConfig({
-        providerID: ProviderV2.ID.alya-code,
+        providerID: ProviderV2.ID.alyaCode,
         name: "Alya Code Zen",
         env: ["ALYA_CODE_CONSOLE_TOKEN"],
         npm: "@ai-sdk/openai-compatible",

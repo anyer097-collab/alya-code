@@ -67,7 +67,7 @@ export default function Home() {
               <span>
                 <span>curl -fsSL </span>
                 <span data-slot="protocol">https://</span>
-                <span data-slot="highlight">alya-code.ai/install</span>
+                <span data-slot="highlight">alyaCode.ai/install</span>
                 <span> | bash</span>
               </span>
               <CopyStatus />
@@ -131,7 +131,7 @@ export default function Home() {
             <h3 data-component="title">homebrew</h3>
             <button data-copy data-slot="button">
               <span>
-                brew install <strong>alya-code</strong>
+                brew install <strong>alyaCode</strong>
               </span>
               <CopyStatus />
             </button>

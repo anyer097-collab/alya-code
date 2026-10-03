@@ -9,9 +9,9 @@ import path from "path"
 
 import { createClient } from "@hey-api/openapi-ts"
 
-const alya-code = path.resolve(dir, "../../alya-code")
+const alyaCode = path.resolve(dir, "../../alya-code")
 
-await $`bun dev generate > ${dir}/openapi.json`.cwd(alya-code)
+await $`bun dev generate > ${dir}/openapi.json`.cwd(alyaCode)
 
 const document = (await Bun.file("./openapi.json").json()) as {
   components?: { schemas?: Record<string, unknown> }

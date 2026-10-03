@@ -245,7 +245,7 @@ export function GLM52Rise() {
               <span style={{ width: 13, height: 13, background: c.accent, display: "inline-block" }} />
               GLM-5.2
             </div>
-            <div style={{ color: c.ink }}>alya-code.ai/data</div>
+            <div style={{ color: c.ink }}>alyaCode.ai/data</div>
           </div>
         </div>
       </div>

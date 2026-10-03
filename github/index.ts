@@ -607,7 +607,7 @@ async function resolveAgent(): Promise<string | undefined> {
 }
 
 async function chat(text: string, files: PromptFiles = []) {
-  console.log("Sending message to alya-code...")
+  console.log("Sending message to alyaCode...")
   const { providerID, modelID } = useEnvModel()
   const agent = await resolveAgent()
 

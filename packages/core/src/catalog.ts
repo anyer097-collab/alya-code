@@ -241,7 +241,7 @@ const layer = Layer.effect(
             return
           }
 
-          if (providerID === ProviderV2.ID.alya-code) {
+          if (providerID === ProviderV2.ID.alyaCode) {
             const gpt5Nano = record.models.get(ModelV2.ID.make("gpt-5-nano"))
             if (gpt5Nano?.enabled && gpt5Nano.status === "active") return projectModel(gpt5Nano, provider)
           }

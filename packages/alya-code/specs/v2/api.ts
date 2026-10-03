@@ -3,11 +3,11 @@
 import { AlyaCode } from "@alya-code/core"
 import { ReadTool } from "@alya-code/core/tools"
 
-const alya-code = AlyaCode.make({})
+const alyaCode = AlyaCode.make({})
 
-alya-code.tool.add(ReadTool)
+alyaCode.tool.add(ReadTool)
 
-alya-code.tool.add({
+alyaCode.tool.add({
   name: "bash",
   schema: {
     type: "object",
@@ -22,13 +22,13 @@ alya-code.tool.add({
   execute(input, ctx) {},
 })
 
-alya-code.auth.add({
+alyaCode.auth.add({
   provider: "openai",
   type: "api",
   value: process.env.OPENAI_API_KEY,
 })
 
-alya-code.agent.add({
+alyaCode.agent.add({
   name: "build",
   permissions: [],
   model: {
@@ -38,20 +38,20 @@ alya-code.agent.add({
   },
 })
 
-const sessionID = await alya-code.session.create({
+const sessionID = await alyaCode.session.create({
   agent: "build",
 })
 
-alya-code.subscribe((event) => {
+alyaCode.subscribe((event) => {
   console.log(event)
 })
 
-await alya-code.session.prompt({
+await alyaCode.session.prompt({
   sessionID,
   text: "hey what is up",
 })
 
-await alya-code.session.prompt({
+await alyaCode.session.prompt({
   sessionID,
   text: "what is up with this",
   files: [
@@ -62,6 +62,6 @@ await alya-code.session.prompt({
   ],
 })
 
-await alya-code.session.wait()
+await alyaCode.session.wait()
 
-console.log(await alya-code.session.messages(sessionID))
+console.log(await alyaCode.session.messages(sessionID))

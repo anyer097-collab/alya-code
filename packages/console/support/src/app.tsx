@@ -10,7 +10,7 @@ export default function App() {
       explicitLinks={true}
       root={(props) => (
         <MetaProvider>
-          <Title>alya-code support</Title>
+          <Title>alyaCode support</Title>
           <Suspense>{props.children}</Suspense>
         </MetaProvider>
       )}

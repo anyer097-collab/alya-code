@@ -96,9 +96,9 @@ describe("alya-code CLI help-text snapshots", () => {
   // versus ~1 minute if we serialized.
   cliIt.live(
     "every documented command emits stable help text",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const topLevel = yield* alya-code.spawn(["--help"], { env: SNAPSHOT_ENV })
+        const topLevel = yield* alyaCode.spawn(["--help"], { env: SNAPSHOT_ENV })
         expect(topLevel.exitCode).toBe(0)
         expect(topLevel.stderr.endsWith("\n")).toBe(true)
         expect(topLevel.stderr).toContain("--mini")
@@ -116,7 +116,7 @@ describe("alya-code CLI help-text snapshots", () => {
           argvs,
           (argv) =>
             Effect.gen(function* () {
-              const result = yield* alya-code.spawn([...argv, "--help"], { env: SNAPSHOT_ENV })
+              const result = yield* alyaCode.spawn([...argv, "--help"], { env: SNAPSHOT_ENV })
               if (result.exitCode !== 0) {
                 return yield* Effect.fail(`alya-code ${argv.join(" ")}: exit ${result.exitCode}`)
               }

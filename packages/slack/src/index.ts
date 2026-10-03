@@ -14,14 +14,14 @@ console.log("- Signing secret present:", !!process.env.SLACK_SIGNING_SECRET)
 console.log("- App token present:", !!process.env.SLACK_APP_TOKEN)
 
 console.log("🚀 Starting alya-code server...")
-const alya-code = await createAlyaCode({
+const alyaCode = await createAlyaCode({
   port: 0,
 })
 console.log("✅ AlyaCode server ready")
 
 const sessions = new Map<string, { client: any; server: any; sessionId: string; channel: string; thread: string }>()
 void (async () => {
-  const events = await alya-code.client.event.subscribe()
+  const events = await alyaCode.client.event.subscribe()
   for await (const event of events.stream) {
     if (event.type === "message.part.updated") {
       const part = event.properties.part
@@ -73,7 +73,7 @@ app.message(async ({ message, say }) => {
 
   if (!session) {
     console.log("🆕 Creating new alya-code session...")
-    const { client, server } = alya-code
+    const { client, server } = alyaCode
 
     const createResult = await client.session.create({
       body: { title: `Slack thread ${thread}` },

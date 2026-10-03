@@ -179,7 +179,7 @@ export type AlyaCodeCli = {
 export type CliFixture = {
   readonly llm: TestLLMServer["Service"]
   readonly home: string
-  readonly alya-code: AlyaCodeCli
+  readonly alyaCode: AlyaCodeCli
 }
 
 // Provisions a TestLLMServer + tmpdir + spawn helper and invokes fn. Cleans
@@ -464,9 +464,9 @@ export function withCliFixture<A, E>(
       } satisfies AcpHandle
     })
 
-    const alya-code: AlyaCodeCli = { run, startRun, serve, acp, spawn, expectExit, parseJsonEvents }
+    const alyaCode: AlyaCodeCli = { run, startRun, serve, acp, spawn, expectExit, parseJsonEvents }
 
-    return yield* fn({ llm, home, alya-code })
+    return yield* fn({ llm, home, alyaCode })
     // FetchHttpClient is provided so test bodies can `yield* HttpClient.HttpClient`
     // and hit endpoints on `alya-code.serve()` without rolling their own fetch.
   }).pipe(

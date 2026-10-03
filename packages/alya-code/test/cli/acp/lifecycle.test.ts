@@ -13,9 +13,9 @@ import { createAcpClient, initialize, newSession, verifierConfig } from "./helpe
 describe("alya-code acp lifecycle subprocess", () => {
   cliIt.live(
     "stdin EOF exits cleanly",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const acp = yield* alya-code.acp()
+        const acp = yield* alyaCode.acp()
         acp.close()
 
         const code = yield* Effect.promise(() => acp.exited).pipe(Effect.timeout(Duration.seconds(5)))
@@ -26,10 +26,10 @@ describe("alya-code acp lifecycle subprocess", () => {
 
   cliIt.live(
     "close capability and close request",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         const initialized = yield* initialize(acp)
@@ -43,10 +43,10 @@ describe("alya-code acp lifecycle subprocess", () => {
 
   cliIt.live(
     "loadSession capability and load request return session config options",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         const initialized = yield* initialize(acp)
@@ -67,10 +67,10 @@ describe("alya-code acp lifecycle subprocess", () => {
 
   cliIt.live(
     "list request includes a live ACP-created session",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
@@ -84,9 +84,9 @@ describe("alya-code acp lifecycle subprocess", () => {
 
   cliIt.live(
     "resume capability advertisement",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const initialized = yield* initialize(yield* createAcpClient({ alya-code }))
+        const initialized = yield* initialize(yield* createAcpClient({ alyaCode }))
 
         expect(initialized.agentCapabilities?.sessionCapabilities?.resume).toEqual({})
       }),
@@ -95,10 +95,10 @@ describe("alya-code acp lifecycle subprocess", () => {
 
   cliIt.live(
     "resume request returns session config options",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)

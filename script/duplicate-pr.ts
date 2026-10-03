@@ -35,7 +35,7 @@ Examples:
     process.exit(1)
   }
 
-  const alya-code = await createAlyaCode({ port: 0 })
+  const alyaCode = await createAlyaCode({ port: 0 })
 
   try {
     const parts: Array<{ type: "text"; text: string } | { type: "file"; url: string; filename: string; mime: string }> =
@@ -58,8 +58,8 @@ Examples:
 
     parts.push({ type: "text", text: message })
 
-    const session = await alya-code.client.session.create()
-    const result = await alya-code.client.session
+    const session = await alyaCode.client.session.create()
+    const result = await alyaCode.client.session
       .prompt({
         path: { id: session.data!.id },
         body: {
@@ -72,7 +72,7 @@ Examples:
 
     console.log(result.trim())
   } finally {
-    alya-code.server.close()
+    alyaCode.server.close()
   }
 }
 

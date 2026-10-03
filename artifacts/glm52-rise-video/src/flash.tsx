@@ -177,7 +177,7 @@ export function FlashShare() {
             <span style={{ width: 13, height: 13, background: c.accent, display: "inline-block" }} />
             DeepSeek V4 Flash · 9.48T tokens · 83.6M requests
           </div>
-          <div style={{ color: c.ink }}>alya-code.ai/data</div>
+          <div style={{ color: c.ink }}>alyaCode.ai/data</div>
         </div>
       </div>
     </AbsoluteFill>

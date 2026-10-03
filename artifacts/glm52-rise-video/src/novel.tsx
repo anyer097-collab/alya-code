@@ -126,7 +126,7 @@ export function NovelTokens() {
             }}
           >
             <div style={{ color: c.dim }}>{nf.format(AVG)} tokens / request · last week</div>
-            <div style={{ color: c.white }}>alya-code.ai/data</div>
+            <div style={{ color: c.white }}>alyaCode.ai/data</div>
           </div>
         </div>
       </div>

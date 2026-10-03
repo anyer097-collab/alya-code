@@ -16,8 +16,8 @@ test("embedded client uses the real router and handlers", async () => {
 
   try {
     const program = Effect.gen(function* () {
-      const alya-code = yield* AlyaCode.create()
-      yield* alya-code.tools.register({
+      const alyaCode = yield* AlyaCode.create()
+      yield* alyaCode.tools.register({
         embedded_tool: Tool.make({
           description: "Embedded test tool",
           input: Schema.Struct({}),
@@ -26,54 +26,54 @@ test("embedded client uses the real router and handlers", async () => {
         }),
       })
 
-      const created = yield* alya-code.sessions.create({
+      const created = yield* alyaCode.sessions.create({
         id: sessionID,
         agent: Agent.ID.make("build"),
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
-      yield* alya-code.sessions.switchModel({ sessionID, model })
-      const selected = yield* alya-code.sessions.get({ sessionID })
-      const page = yield* alya-code.sessions.list({ directory: AbsolutePath.make(directory) })
-      const active = yield* alya-code.sessions.active()
-      const admitted = yield* alya-code.sessions.prompt({
+      yield* alyaCode.sessions.switchModel({ sessionID, model })
+      const selected = yield* alyaCode.sessions.get({ sessionID })
+      const page = yield* alyaCode.sessions.list({ directory: AbsolutePath.make(directory) })
+      const active = yield* alyaCode.sessions.active()
+      const admitted = yield* alyaCode.sessions.prompt({
         sessionID,
         prompt: Prompt.make({ text: "Do not run" }),
         resume: false,
       })
-      const context = yield* alya-code.sessions.context({ sessionID })
-      const wake = yield* alya-code.sessions.prompt({
+      const context = yield* alyaCode.sessions.context({ sessionID })
+      const wake = yield* alyaCode.sessions.prompt({
         sessionID,
         prompt: Prompt.make({ text: "Promote this input" }),
       })
-      const prompted = yield* alya-code.sessions.events({ sessionID }).pipe(
+      const prompted = yield* alyaCode.sessions.events({ sessionID }).pipe(
         Stream.filter((event) => event.type === "session.next.prompted" && event.data.messageID === wake.id),
         Stream.runHead,
         Effect.timeout("10 seconds"),
         Effect.map(Option.getOrThrow),
       )
-      const wakeContext = yield* alya-code.sessions.context({ sessionID })
-      const event = yield* alya-code.sessions
+      const wakeContext = yield* alyaCode.sessions.context({ sessionID })
+      const event = yield* alyaCode.sessions
         .events({ sessionID })
         .pipe(Stream.take(1), Stream.runHead, Effect.map(Option.getOrUndefined))
       const modelMessage = Option.fromNullishOr(context.find((message) => message.type === "model-switched")).pipe(
         Option.getOrThrow,
       )
-      const message = yield* alya-code.sessions.message({ sessionID, messageID: modelMessage.id })
-      yield* alya-code.sessions.interrupt({ sessionID })
-      const other = yield* alya-code.sessions.create({
+      const message = yield* alyaCode.sessions.message({ sessionID, messageID: modelMessage.id })
+      yield* alyaCode.sessions.interrupt({ sessionID })
+      const other = yield* alyaCode.sessions.create({
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
       const missingSessionID = Session.ID.make(`ses_missing_${crypto.randomUUID()}`)
       const missing = yield* Effect.all(
         [
-          alya-code.sessions.events({ sessionID: missingSessionID }).pipe(Stream.runHead, Effect.flip),
-          alya-code.sessions.interrupt({ sessionID: missingSessionID }).pipe(Effect.flip),
-          alya-code.sessions.message({ sessionID: missingSessionID, messageID: modelMessage.id }).pipe(Effect.flip),
+          alyaCode.sessions.events({ sessionID: missingSessionID }).pipe(Stream.runHead, Effect.flip),
+          alyaCode.sessions.interrupt({ sessionID: missingSessionID }).pipe(Effect.flip),
+          alyaCode.sessions.message({ sessionID: missingSessionID, messageID: modelMessage.id }).pipe(Effect.flip),
         ],
         { concurrency: "unbounded" },
       )
       const missingMessage = yield* Effect.flip(
-        alya-code.sessions.message({
+        alyaCode.sessions.message({
           sessionID: other.id,
           messageID: modelMessage.id,
         }),
@@ -113,10 +113,10 @@ test("Location-owned runner events reach the ready global client", async () => {
 
   try {
     const program = Effect.gen(function* () {
-      const alya-code = yield* AlyaCode.create()
+      const alyaCode = yield* AlyaCode.create()
       const connected = yield* Latch.make(false)
       const prompted = yield* Deferred.make<AlyaCodeEvent>()
-      yield* alya-code.events.subscribe().pipe(
+      yield* alyaCode.events.subscribe().pipe(
         Stream.runForEach((event) =>
           event.type === "server.connected"
             ? connected.open
@@ -127,11 +127,11 @@ test("Location-owned runner events reach the ready global client", async () => {
         Effect.forkScoped,
       )
       yield* connected.await
-      yield* alya-code.sessions.create({
+      yield* alyaCode.sessions.create({
         id: sessionID,
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
-      yield* alya-code.sessions.prompt({ sessionID, prompt: Prompt.make({ text: "Observe this input" }) })
+      yield* alyaCode.sessions.prompt({ sessionID, prompt: Prompt.make({ text: "Observe this input" }) })
 
       const event = yield* Deferred.await(prompted).pipe(Effect.timeout("4 seconds"))
       expect(event.durable).toEqual(expect.objectContaining({ aggregateID: sessionID, seq: expect.any(Number) }))
@@ -196,8 +196,8 @@ test("embedded client is available as a Layer service", async () => {
   try {
     const created = await Effect.runPromise(
       Effect.gen(function* () {
-        const alya-code = yield* AlyaCode.Service
-        return yield* alya-code.sessions.create({
+        const alyaCode = yield* AlyaCode.Service
+        return yield* alyaCode.sessions.create({
           id: sessionID,
           location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
         })

@@ -24,10 +24,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // and the command should report that cleanly.
   cliIt.live(
     "mcp list: exits 0",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["mcp", "list"])
-        alya-code.expectExit(r, 0, "mcp list")
+        const r = yield* alyaCode.spawn(["mcp", "list"])
+        alyaCode.expectExit(r, 0, "mcp list")
       }),
     60_000,
   )
@@ -40,10 +40,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // test passes on a clean CI runner without env-var leakage.
   cliIt.live(
     "providers list: exits 0 and prints the credentials section",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["providers", "list"])
-        alya-code.expectExit(r, 0, "providers list")
+        const r = yield* alyaCode.spawn(["providers", "list"])
+        alyaCode.expectExit(r, 0, "providers list")
         expect(r.stdout).toContain("Credentials")
       }),
     60_000,
@@ -53,10 +53,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // should appear because it's wired into the test provider config.
   cliIt.live(
     "models: exits 0 and lists the test model",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["models"])
-        alya-code.expectExit(r, 0, "models")
+        const r = yield* alyaCode.spawn(["models"])
+        alyaCode.expectExit(r, 0, "models")
         expect(r.stdout).toContain("test/test-model")
       }),
     60_000,
@@ -67,10 +67,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // similar. We don't pin the message — just exit cleanly.
   cliIt.live(
     "agent list: exits 0",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["agent", "list"])
-        alya-code.expectExit(r, 0, "agent list")
+        const r = yield* alyaCode.spawn(["agent", "list"])
+        alyaCode.expectExit(r, 0, "agent list")
       }),
     60_000,
   )
@@ -79,10 +79,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // empty DB. Exit 0 with no sessions.
   cliIt.live(
     "session list: exits 0",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["session", "list"])
-        alya-code.expectExit(r, 0, "session list")
+        const r = yield* alyaCode.spawn(["session", "list"])
+        alyaCode.expectExit(r, 0, "session list")
       }),
     60_000,
   )
@@ -90,10 +90,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // `stats` aggregates token usage from the session DB. Empty DB → all zeros.
   cliIt.live(
     "stats: exits 0",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["stats"])
-        alya-code.expectExit(r, 0, "stats")
+        const r = yield* alyaCode.spawn(["stats"])
+        alyaCode.expectExit(r, 0, "stats")
       }),
     60_000,
   )
@@ -104,10 +104,10 @@ describe("alya-code read-only commands (smoke)", () => {
   // Accept either form — both prove the resolver ran without crashing.
   cliIt.live(
     "db path: exits 0 and prints a path or :memory:",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const r = yield* alya-code.spawn(["db", "path"])
-        alya-code.expectExit(r, 0, "db path")
+        const r = yield* alyaCode.spawn(["db", "path"])
+        alyaCode.expectExit(r, 0, "db path")
         expect(r.stdout.trim()).toMatch(/^(:memory:|[/\\].+\.(db|sqlite|sqlite3))$/i)
       }),
     60_000,

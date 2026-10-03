@@ -9,13 +9,13 @@ import { createAcpClient, initialize, newSession, verifierConfig, verifierSkill 
 describe("alya-code acp skills subprocess", () => {
   cliIt.live(
     "skill slash command appears through available_commands_update",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const skills = path.join(home, "skills")
         yield* Effect.promise(() => mkdir(path.join(skills, "verifier-skill"), { recursive: true }))
         yield* Effect.promise(() => Bun.write(path.join(skills, "verifier-skill", "SKILL.md"), verifierSkill))
         const acp = yield* createAcpClient(
-          { alya-code },
+          { alyaCode },
           { ALYA_CODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url, skills)) },
         )
         yield* initialize(acp)

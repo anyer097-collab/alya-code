@@ -72,29 +72,29 @@ describe("tui thread", () => {
     expect(args.mdns).toBe(false)
   })
 
-  cliIt.live("rejects mini-only options without --mini", ({ alya-code }) =>
+  cliIt.live("rejects mini-only options without --mini", ({ alyaCode }) =>
     Effect.gen(function* () {
-      const result = yield* alya-code.spawn(["--replay-limit", "10"])
+      const result = yield* alyaCode.spawn(["--replay-limit", "10"])
 
-      alya-code.expectExit(result, 1)
+      alyaCode.expectExit(result, 1)
       expect(result.stderr).toContain("--replay-limit requires --mini")
     }),
   )
 
-  cliIt.live("routes attached sessions to mini mode", ({ alya-code }) =>
+  cliIt.live("routes attached sessions to mini mode", ({ alyaCode }) =>
     Effect.gen(function* () {
-      const result = yield* alya-code.spawn(["attach", "http://127.0.0.1:1", "--mini"])
+      const result = yield* alyaCode.spawn(["attach", "http://127.0.0.1:1", "--mini"])
 
-      alya-code.expectExit(result, 1)
+      alyaCode.expectExit(result, 1)
       expect(result.stderr).toContain("--mini requires a TTY stdout")
     }),
   )
 
-  cliIt.live("rejects network options in mini mode", ({ alya-code }) =>
+  cliIt.live("rejects network options in mini mode", ({ alyaCode }) =>
     Effect.gen(function* () {
-      const result = yield* alya-code.spawn(["--mini", "--port", "4096"])
+      const result = yield* alyaCode.spawn(["--mini", "--port", "4096"])
 
-      alya-code.expectExit(result, 1)
+      alyaCode.expectExit(result, 1)
       expect(result.stderr).toContain("--port cannot be used with --mini")
     }),
   )

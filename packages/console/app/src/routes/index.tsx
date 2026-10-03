@@ -102,7 +102,7 @@ export default function Home() {
                       <span data-slot="command-script">
                         <span>curl -fsSL </span>
                         <span data-slot="protocol">https://</span>
-                        <span data-slot="highlight">alya-code.ai/v2/install</span>
+                        <span data-slot="highlight">alyaCode.ai/v2/install</span>
                         <span> | bash</span>
                       </span>
                       <CopyStatus />

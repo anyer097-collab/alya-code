@@ -1,6 +1,6 @@
 import { Context } from "effect"
 
-const alyacodeOrigin = /^https:\/\/([a-z0-9-]+\.)*alya-code\.ai$/
+const alyacodeOrigin = /^https:\/\/([a-z0-9-]+\.)*alyaCode\.ai$/
 
 export type CorsOptions = { readonly cors?: ReadonlyArray<string> }
 

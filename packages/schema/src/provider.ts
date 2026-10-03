@@ -8,7 +8,7 @@ import { statics } from "./schema"
 export const ID = Schema.String.pipe(
   Schema.brand("ProviderV2.ID"),
   statics((schema) => ({
-    alya-code: schema.make("alya-code"),
+    alyaCode: schema.make("alya-code"),
     anthropic: schema.make("anthropic"),
     openai: schema.make("openai"),
     google: schema.make("google"),

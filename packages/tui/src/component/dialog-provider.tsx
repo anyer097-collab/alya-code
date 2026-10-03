@@ -17,7 +17,7 @@ import { useBindings } from "../keymap"
 import { useClipboard } from "../context/clipboard"
 
 const PROVIDER_PRIORITY: Record<string, number> = {
-  alya-code: 0,
+  alyaCode: 0,
   "alya-code-go": 1,
   openai: 2,
   "github-copilot": 3,
@@ -59,7 +59,7 @@ export function providerOptions(list: { id: string; name: string }[]): ProviderO
         value: provider.id,
         providerID: provider.id,
         description: {
-          alya-code: "(Recommended)",
+          alyaCode: "(Recommended)",
           anthropic: "(API key)",
           openai: "(ChatGPT Plus/Pro or API key)",
           "alya-code-go": "Low cost subscription for everyone",
@@ -96,7 +96,7 @@ export function createDialogProviderOptions() {
       placeholder: "Provider id",
       description: () => (
         <text fg={theme.textMuted}>
-          This only stores a credential. Configure the provider in alya-code.json to use it.
+          This only stores a credential. Configure the provider in alyaCode.json to use it.
         </text>
       ),
     })
@@ -368,7 +368,7 @@ function ApiMethod(props: ApiMethodProps) {
       placeholder="API key"
       description={() =>
         ({
-          alya-code: (
+          alyaCode: (
             <box gap={1}>
               <text fg={theme.textMuted}>
                 AlyaCode Zen gives you access to all the best coding models at the cheapest prices with a single API

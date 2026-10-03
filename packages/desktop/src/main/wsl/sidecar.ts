@@ -18,8 +18,8 @@ export async function spawnWslSidecar(
   distro: string,
   opts: { onLine?: (line: WslCommandLine) => void; healthTimeoutMs?: number } = {},
 ): Promise<WslSidecar> {
-  const alya-code = await resolveWslAlyaCode(distro)
-  if (!alya-code) throw new Error(nativeT("desktop.wsl.error.alyacodeNotInstalled", { distro }))
+  const alyaCode = await resolveWslAlyaCode(distro)
+  if (!alyaCode) throw new Error(nativeT("desktop.wsl.error.alyacodeNotInstalled", { distro }))
 
   const port = await allocatePort()
   const password = randomUUID()

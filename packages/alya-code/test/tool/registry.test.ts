@@ -124,7 +124,7 @@ describe("tool.registry", () => {
       const agents = yield* Agent.Service
       const ids = yield* registry.ids()
       const tools = yield* registry.tools({
-        providerID: ProviderV2.ID.alya-code,
+        providerID: ProviderV2.ID.alyaCode,
         modelID: ModelV2.ID.make("test"),
         agent: yield* agents.defaultInfo(),
       })
@@ -141,7 +141,7 @@ describe("tool.registry", () => {
       const registry = yield* ToolRegistry.Service
       const agents = yield* Agent.Service
       const tools = yield* registry.tools({
-        providerID: ProviderV2.ID.alya-code,
+        providerID: ProviderV2.ID.alyaCode,
         modelID: ModelV2.ID.make("test"),
         agent: yield* agents.defaultInfo(),
       })
@@ -157,7 +157,7 @@ describe("tool.registry", () => {
       const build = yield* agent.get("build")
       if (!build) throw new Error("build agent not found")
       const task = (yield* registry.tools({
-        providerID: ProviderV2.ID.alya-code,
+        providerID: ProviderV2.ID.alyaCode,
         modelID: ModelV2.ID.make("test"),
         agent: build,
       })).find((tool) => tool.id === "task")
@@ -170,8 +170,8 @@ describe("tool.registry", () => {
   it.instance("loads tools from .alya-code/tool (singular)", () =>
     Effect.gen(function* () {
       const test = yield* TestInstance
-      const alya-code = path.join(test.directory, ".alya-code")
-      const tool = path.join(alya-code, "tool")
+      const alyaCode = path.join(test.directory, ".alya-code")
+      const tool = path.join(alyaCode, "tool")
       yield* Effect.promise(() => fs.mkdir(tool, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(
@@ -275,8 +275,8 @@ describe("tool.registry", () => {
   it.instance("loads tools from .alya-code/tools (plural)", () =>
     Effect.gen(function* () {
       const test = yield* TestInstance
-      const alya-code = path.join(test.directory, ".alya-code")
-      const tools = path.join(alya-code, "tools")
+      const alyaCode = path.join(test.directory, ".alya-code")
+      const tools = path.join(alyaCode, "tools")
       yield* Effect.promise(() => fs.mkdir(tools, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(
@@ -335,7 +335,7 @@ describe("tool.registry", () => {
 
       const agents = yield* Agent.Service
       const promptTools = yield* registry.tools({
-        providerID: ProviderV2.ID.alya-code,
+        providerID: ProviderV2.ID.alyaCode,
         modelID: ModelV2.ID.make("test"),
         agent: yield* agents.defaultInfo(),
       })
@@ -355,13 +355,13 @@ describe("tool.registry", () => {
     () =>
       Effect.gen(function* () {
         const test = yield* TestInstance
-        const alya-code = path.join(test.directory, ".alya-code")
-        const customTools = path.join(alya-code, "tools")
-        const plugin = path.join(alya-code, "node_modules", "@alya-code-ai", "plugin")
+        const alyaCode = path.join(test.directory, ".alya-code")
+        const customTools = path.join(alyaCode, "tools")
+        const plugin = path.join(alyaCode, "node_modules", "@alya-code-ai", "plugin")
         yield* Effect.promise(() => fs.mkdir(path.join(plugin, "dist"), { recursive: true }))
         yield* Effect.promise(() => fs.mkdir(customTools, { recursive: true }))
         yield* Effect.promise(() =>
-          fs.cp(path.dirname(fileURLToPath(import.meta.resolve("zod"))), path.join(alya-code, "node_modules", "zod"), {
+          fs.cp(path.dirname(fileURLToPath(import.meta.resolve("zod"))), path.join(alyaCode, "node_modules", "zod"), {
             dereference: true,
             recursive: true,
           }),
@@ -497,12 +497,12 @@ describe("tool.registry", () => {
   it.instance("loads tools with external dependencies without crashing", () =>
     Effect.gen(function* () {
       const test = yield* TestInstance
-      const alya-code = path.join(test.directory, ".alya-code")
-      const tools = path.join(alya-code, "tools")
+      const alyaCode = path.join(test.directory, ".alya-code")
+      const tools = path.join(alyaCode, "tools")
       yield* Effect.promise(() => fs.mkdir(tools, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(
-          path.join(alya-code, "package.json"),
+          path.join(alyaCode, "package.json"),
           JSON.stringify({
             name: "custom-tools",
             dependencies: {
@@ -514,7 +514,7 @@ describe("tool.registry", () => {
       )
       yield* Effect.promise(() =>
         Bun.write(
-          path.join(alya-code, "package-lock.json"),
+          path.join(alyaCode, "package-lock.json"),
           JSON.stringify({
             name: "custom-tools",
             lockfileVersion: 3,
@@ -530,7 +530,7 @@ describe("tool.registry", () => {
         ),
       )
 
-      const cowsay = path.join(alya-code, "node_modules", "cowsay")
+      const cowsay = path.join(alyaCode, "node_modules", "cowsay")
       yield* Effect.promise(() => fs.mkdir(cowsay, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(

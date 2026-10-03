@@ -184,7 +184,7 @@ describe("inference stat normalization", () => {
     const catalog = catalogIdentity({
       models: { "meituan/longcat-2.5-preview": {}, "cohere/north-mini-code": {}, "zhipuai/glm-5.3": {} },
       providers: {
-        alya-code: {
+        alyaCode: {
           models: {
             "longcat-2.5-preview-free": { canonical_model_id: "meituan/longcat-2.5-preview" },
             "north-mini-code": { canonical_model_id: "cohere/north-mini-code" },

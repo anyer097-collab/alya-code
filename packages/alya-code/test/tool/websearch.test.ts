@@ -38,7 +38,7 @@ describe("websearch provider", () => {
   })
 
   test("is enabled for Alya Code providers or explicit websearch provider flags", () => {
-    expect(webSearchEnabled(ProviderV2.ID.alya-code, { exa: false, parallel: false })).toBe(true)
+    expect(webSearchEnabled(ProviderV2.ID.alyaCode, { exa: false, parallel: false })).toBe(true)
     expect(webSearchEnabled(ProviderV2.ID.make("alya-code-go"), { exa: false, parallel: false })).toBe(true)
     expect(webSearchEnabled(ProviderV2.ID.openai, { exa: false, parallel: false })).toBe(false)
     expect(webSearchEnabled(ProviderV2.ID.openai, { exa: true, parallel: false })).toBe(true)

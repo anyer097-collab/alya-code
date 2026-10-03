@@ -228,7 +228,7 @@ export const githubInstall = Effect.fn("Cli.github.install")(function* () {
 
       async function promptProvider() {
         const priority: Record<string, number> = {
-          alya-code: 0,
+          alyaCode: 0,
           anthropic: 1,
           openai: 2,
           google: 3,
@@ -895,7 +895,7 @@ export const githubRun = Effect.fn("Cli.github.run")(function* (args: { event?: 
     }
 
     async function chat(message: string, files: PromptFiles = []) {
-      console.log("Sending message to alya-code...")
+      console.log("Sending message to alyaCode...")
 
       return runLocalEffect(
         Effect.gen(function* () {

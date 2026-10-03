@@ -13,7 +13,7 @@ import {
 
 export function createAcpClient(input: Pick<CliFixture, "alya-code">, env?: Record<string, string>) {
   return Effect.gen(function* () {
-    return createJsonRpcAcpClient(yield* input.alya-code.acp(env ? { env } : undefined))
+    return createJsonRpcAcpClient(yield* input.alyaCode.acp(env ? { env } : undefined))
   })
 }
 

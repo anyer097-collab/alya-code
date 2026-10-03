@@ -13,11 +13,11 @@ describe("alya-code run (non-interactive subprocess)", () => {
   // If this fails, all the others likely will too — debug here first.
   cliIt.concurrent(
     "exits 0 and writes the response to stdout on a successful prompt",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.text("hello from the test llm")
-        const result = yield* alya-code.run("say hi")
-        alya-code.expectExit(result, 0)
+        const result = yield* alyaCode.run("say hi")
+        alyaCode.expectExit(result, 0)
         expect(result.stdout).toBe("hello from the test llm\n")
       }),
     60_000,
@@ -25,7 +25,7 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "prints each completed text part in order around a tool continuation",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().text("  before tool  ").tool("bash", {
@@ -35,11 +35,11 @@ describe("alya-code run (non-interactive subprocess)", () => {
         )
         yield* llm.text("  after tool  ")
 
-        const result = yield* alya-code.run("use a tool", {
+        const result = yield* alyaCode.run("use a tool", {
           extraArgs: ["--dangerously-skip-permissions"],
         })
 
-        alya-code.expectExit(result, 0)
+        alyaCode.expectExit(result, 0)
         expect(result.stdout).toBe("before tool\nafter tool\n")
       }),
     60_000,
@@ -47,16 +47,16 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "prints reasoning before text only with --thinking",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.reason("  considering  ", { text: "  answer  " })
-        const thinking = yield* alya-code.run("think", { extraArgs: ["--thinking"] })
-        alya-code.expectExit(thinking, 0)
+        const thinking = yield* alyaCode.run("think", { extraArgs: ["--thinking"] })
+        alyaCode.expectExit(thinking, 0)
         expect(thinking.stdout).toBe("Thinking: considering\nanswer\n")
 
         yield* llm.reason("hidden", { text: "visible" })
-        const plain = yield* alya-code.run("think again")
-        alya-code.expectExit(plain, 0)
+        const plain = yield* alyaCode.run("think again")
+        alyaCode.expectExit(plain, 0)
         expect(plain.stdout).toBe("visible\n")
       }),
     60_000,
@@ -70,9 +70,9 @@ describe("alya-code run (non-interactive subprocess)", () => {
   // Keep competing CLI startups out of this wall-clock assertion on busy CI runners.
   cliIt.live(
     "exits nonzero promptly when the model is unknown (regression for #27371)",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const result = yield* alya-code.run("say hi", {
+        const result = yield* alyaCode.run("say hi", {
           model: "test/nonexistent-model",
           timeoutMs: 15_000,
         })
@@ -87,7 +87,7 @@ describe("alya-code run (non-interactive subprocess)", () => {
   // the prompt loop so a subsequent response can complete the run.
   cliIt.concurrent(
     "unknown stream finish preserves partial output and continues",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().text("partial response").tool("bash", {
@@ -97,7 +97,7 @@ describe("alya-code run (non-interactive subprocess)", () => {
         )
         yield* llm.fail("upstream provider exploded mid-stream")
         yield* llm.text("recovered")
-        const result = yield* alya-code.run("trigger midstream error", { timeoutMs: 30_000 })
+        const result = yield* alyaCode.run("trigger midstream error", { timeoutMs: 30_000 })
         expect(result.exitCode).toBe(0)
         expect(result.stdout).toBe("partial response\nrecovered\n")
         expect(result.stderr).not.toContain("upstream provider exploded mid-stream")
@@ -110,13 +110,13 @@ describe("alya-code run (non-interactive subprocess)", () => {
   // shape so a future event-emit change has to update this expectation.
   cliIt.concurrent(
     "--format json emits parseable line-delimited JSON to stdout",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.text("structured output")
-        const result = yield* alya-code.run("say hi", { format: "json" })
-        alya-code.expectExit(result, 0)
+        const result = yield* alyaCode.run("say hi", { format: "json" })
+        alyaCode.expectExit(result, 0)
 
-        const events = alya-code.parseJsonEvents(result.stdout)
+        const events = alyaCode.parseJsonEvents(result.stdout)
         expect(events.length).toBeGreaterThan(0)
         for (const evt of events) {
           expect(typeof evt.type).toBe("string")
@@ -144,15 +144,15 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "--format json emits a pure error record for a rejected prompt request",
-    ({ alya-code }) =>
+    ({ alyaCode }) =>
       Effect.gen(function* () {
-        const result = yield* alya-code.run("use an unknown model", {
+        const result = yield* alyaCode.run("use an unknown model", {
           model: "test/nonexistent-model",
           format: "json",
         })
 
         expect(result.exitCode).not.toBe(0)
-        const events = alya-code.parseJsonEvents(result.stdout)
+        const events = alyaCode.parseJsonEvents(result.stdout)
         expect(events.map((event) => event.type)).toEqual(["error"])
         expect(events[0]).toEqual({
           type: "error",
@@ -167,7 +167,7 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "--format json preserves reasoning, tool, and continuation ordering",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().reason("reasoning").text("before").tool("bash", {
@@ -177,13 +177,13 @@ describe("alya-code run (non-interactive subprocess)", () => {
         )
         yield* llm.text("after")
 
-        const result = yield* alya-code.run("exercise json records", {
+        const result = yield* alyaCode.run("exercise json records", {
           format: "json",
           extraArgs: ["--thinking", "--dangerously-skip-permissions"],
         })
 
         expect(result.exitCode).toBe(0)
-        const events = alya-code.parseJsonEvents(result.stdout)
+        const events = alyaCode.parseJsonEvents(result.stdout)
         expect(events.map((event) => event.type)).toEqual([
           "step_start",
           "reasoning",
@@ -216,7 +216,7 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "--format json records an unknown stream finish and continuation",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().text("partial json").tool("bash", {
@@ -226,9 +226,9 @@ describe("alya-code run (non-interactive subprocess)", () => {
         )
         yield* llm.fail("provider failed")
         yield* llm.text("recovered")
-        const result = yield* alya-code.run("fail after output", { format: "json" })
+        const result = yield* alyaCode.run("fail after output", { format: "json" })
 
-        const events = alya-code.parseJsonEvents(result.stdout)
+        const events = alyaCode.parseJsonEvents(result.stdout)
         expect(result.exitCode).toBe(0)
         expect(events.map((event) => event.type)).toEqual([
           "step_start",
@@ -251,34 +251,34 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "rejects requested permissions by default and allows them with the dangerous flag",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.tool("bash", { command: "rm -f denied-file", description: "Remove a test file" })
         yield* llm.text("continued after rejection")
-        const denied = yield* alya-code.run("request permission", { permission: { bash: "ask" } })
-        alya-code.expectExit(denied, 0)
+        const denied = yield* alyaCode.run("request permission", { permission: { bash: "ask" } })
+        alyaCode.expectExit(denied, 0)
         expect(denied.stderr).toContain("permission requested: bash")
         expect(denied.stdout).toBe("")
 
         yield* llm.reset
         yield* llm.tool("bash", { command: "rm -f allowed-file", description: "Remove a test file" })
         yield* llm.text("continued after approval")
-        const allowed = yield* alya-code.run("request permission", {
+        const allowed = yield* alyaCode.run("request permission", {
           permission: { bash: "ask" },
           extraArgs: ["--dangerously-skip-permissions"],
         })
-        alya-code.expectExit(allowed, 0)
+        alyaCode.expectExit(allowed, 0)
         expect(allowed.stderr).not.toContain("permission requested: bash")
         expect(allowed.stdout).toContain("continued after approval")
 
         yield* llm.reset
         yield* llm.tool("bash", { command: "touch explicitly-denied", description: "Create a denied marker" })
         yield* llm.text("continued after explicit denial")
-        const explicitlyDenied = yield* alya-code.run("request denied permission", {
+        const explicitlyDenied = yield* alyaCode.run("request denied permission", {
           permission: { bash: "deny" },
           extraArgs: ["--dangerously-skip-permissions"],
         })
-        alya-code.expectExit(explicitlyDenied, 0)
+        alyaCode.expectExit(explicitlyDenied, 0)
         expect(explicitlyDenied.stdout).toContain("continued after explicit denial")
         expect(yield* Effect.promise(() => Bun.file(`${home}/explicitly-denied`).exists())).toBe(false)
       }),
@@ -287,19 +287,19 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.live(
     "attach mode sends client-local file contents without a shared path",
-    ({ home, llm, alya-code }) =>
+    ({ home, llm, alyaCode }) =>
       Effect.gen(function* () {
         const source = `${home}/client-only.txt`
         const sentinel = "client-only attachment sentinel"
         yield* Effect.promise(() => Bun.write(source, sentinel))
         yield* llm.text("attachment received")
-        const server = yield* alya-code.serve()
+        const server = yield* alyaCode.serve()
 
-        const result = yield* alya-code.run("read the attachment", {
+        const result = yield* alyaCode.run("read the attachment", {
           extraArgs: ["--attach", server.url, `--file=${source}`, "--"],
         })
 
-        alya-code.expectExit(result, 0)
+        alyaCode.expectExit(result, 0)
         const input = JSON.stringify(yield* llm.inputs)
         expect(input).toContain(sentinel)
         expect(input).not.toContain(`file://${source}`)
@@ -309,9 +309,9 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "attach mode rejects local directories before prompt admission",
-    ({ home, alya-code }) =>
+    ({ home, alyaCode }) =>
       Effect.gen(function* () {
-        const result = yield* alya-code.run("read the directory", {
+        const result = yield* alyaCode.run("read the directory", {
           extraArgs: ["--attach", "http://127.0.0.1:1", `--file=${home}`, "--"],
         })
 
@@ -323,10 +323,10 @@ describe("alya-code run (non-interactive subprocess)", () => {
 
   cliIt.live(
     "SIGINT interrupts an active non-interactive run without leaking the process",
-    ({ llm, alya-code }) =>
+    ({ llm, alyaCode }) =>
       Effect.gen(function* () {
         yield* llm.hang
-        const run = yield* alya-code.startRun("wait forever")
+        const run = yield* alyaCode.startRun("wait forever")
         yield* llm.wait(1)
         run.interrupt()
         const result = yield* run.result

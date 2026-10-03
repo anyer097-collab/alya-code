@@ -57,7 +57,7 @@ import { McpCatalog } from "@/mcp/catalog"
 
 export function webSearchEnabled(providerID: ProviderV2.ID, flags = { exa: false, parallel: false }) {
   return (
-    providerID === ProviderV2.ID.alya-code ||
+    providerID === ProviderV2.ID.alyaCode ||
     providerID === ProviderV2.ID.make("alya-code-go") ||
     flags.exa ||
     flags.parallel
