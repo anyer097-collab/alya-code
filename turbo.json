@@ -1,0 +1,36 @@
+{
+  "$schema": "https://v2-8-13.turborepo.dev/schema.json",
+  "globalEnv": ["CI", "ALYA_CODE_DISABLE_SHARE"],
+  "globalPassThroughEnv": ["CI", "ALYA_CODE_DISABLE_SHARE"],
+  "tasks": {
+    "typecheck": {},
+    "build": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "alya-code#test": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "passThroughEnv": ["*"]
+    },
+    "@alya-code/core#test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@alya-code/function#test": {
+      "outputs": []
+    },
+    "@alya-code/app#test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@alya-code/ui#test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@alya-code/session-ui#test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    }
+  }
+}

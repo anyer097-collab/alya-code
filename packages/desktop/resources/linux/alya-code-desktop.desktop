@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Alya Code
+Exec=/opt/Alya Code/ai.alya-code.desktop %U
+Terminal=false
+Type=Application
+Icon=ai.alya-code.desktop
+StartupWMClass=ai.alya-code.desktop
+NoDisplay=true
+Comment=Open source AI coding agent
+Categories=Development;
