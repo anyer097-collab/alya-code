@@ -95,10 +95,22 @@ y protege URLs y paquetes externos.
 
 MIT, heredada de opencode. Ver [LICENSE](./LICENSE).
 
-## Pool de Alya Servers
+## Arquitectura
 
-Alya Code usa por defecto los **Alya Servers**: siete workers de Cloudflare con
-API compatible con OpenAI, multimodales y con function calling nativo.
+```
+Alya Code (CLI)  →  alya-code  →  alya-serverN  →  Workers AI
+                    agregador     7 cuentas
+```
+
+**`alya-code`** es un worker agregador: una sola URL pública que reparte entre
+todos los Alya Servers y hace failover cuando una cuenta agota sus neuronas.
+
+El pool vive en la variable `ALYA_SERVERS` de ese worker, **no en este repo**.
+Sumar una cuenta es editar esa variable: ni se toca el repositorio ni hay que
+publicar una versión nueva del cliente.
+
+Cada **`alya-serverN`** ya hace de router por cuenta: elige modelo, cascada de
+respaldo y solo expone modelos del plan gratuito.
 
 ```json
 {
@@ -106,7 +118,7 @@ API compatible con OpenAI, multimodales y con function calling nativo.
     "alya": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Alya Server",
-      "options": { "baseURL": "https://alya-server7.anyer-alya5.workers.dev/v1" }
+      "options": { "baseURL": "https://alya-code.anyer097.workers.dev/v1" }
     }
   },
   "model": "alya/alya"
@@ -115,7 +127,7 @@ API compatible con OpenAI, multimodales y con function calling nativo.
 
 ### Catálogo que se actualiza solo
 
-Los servidores están en [`alya-servers.json`](./alya-servers.json). Alya Code lo
+El endpoint está en [`alya-servers.json`](./alya-servers.json). Alya Code lo
 descarga **una vez al día** y lo fusiona con los tuyos:
 
 ```
@@ -124,8 +136,9 @@ remote   el catálogo del repo     ← refresco cada 24 h
 builtin  respaldo empotrado       ← solo si no hay red ni caché
 ```
 
-Para sumar un servidor al pool de todos, se añade al JSON y se abre un PR: el
-resto de clientes lo recoge al día siguiente sin actualizar nada.
+Para sumar una cuenta al pool **no hace falta tocar nada de esto**: se añade a
+`ALYA_SERVERS` en el worker `alya-code` y entra al instante. El JSON solo se
+edita si quieres cambiar el endpoint principal o añadir uno alternativo.
 
 ### Comandos
 
@@ -143,6 +156,13 @@ servidor que no habla el protocolo.
 ### Salud y reparto
 
 Cada cuenta de Cloudflare aporta 10.000 neuronas al día, así que siete suman
-**70.000**. Cuando una se agota, el cliente la aparta **1 hora** y pasa a la
-siguiente sin que lo notes; un fallo puntual la aparta solo 2 minutos. Si todas
-estuvieran en espera, se reintenta igual: mejor eso que no responder.
+**70.000**. El agregador reparte en rotación para no agotar siempre la misma, y
+cuando una se queda sin cuota la aparta **1 hora** (2 minutos si fue un fallo
+puntual) y sigue con la siguiente. Si todas estuvieran en espera, reintenta
+igual: mejor eso que no responder.
+
+El agregador **no consume neuronas**, solo enruta. El plan gratuito de Workers
+da 100.000 peticiones al día, de sobra.
+
+La respuesta incluye la cabecera `X-Alya-Server` indicando qué cuenta atendió,
+útil para depurar.

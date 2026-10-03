@@ -16,16 +16,15 @@
 export const REMOTE_URL =
   "https://raw.githubusercontent.com/anyer097-collab/alya-code/main/alya-servers.json"
 
-/** Respaldo si no hay red ni caché. Se mantiene sincronizado con el JSON. */
-export const BUILTIN_SERVERS = [
-  "https://alya-server7.anyer-alya5.workers.dev",
-  "https://alya-server6.anyer-alya4.workers.dev",
-  "https://alya-server5.anyer-alya3.workers.dev",
-  "https://alya-server4.anyer-alya2.workers.dev",
-  "https://alya-server3.anyer-alya.workers.dev",
-  "https://alya-server2.anyerjrsenior.workers.dev",
-  "https://alya-server1.anyer097.workers.dev",
-]
+/**
+ * Respaldo si no hay red ni caché.
+ *
+ * Es UNA sola URL a propósito: `alya-code` es un agregador que ya reparte
+ * entre todas las cuentas y hace failover por dentro. Añadir una cuenta al
+ * pool se hace en la variable ALYA_SERVERS de ese worker, sin tocar el repo
+ * ni publicar una versión nueva del cliente.
+ */
+export const BUILTIN_SERVERS = ["https://alya-code.anyer097.workers.dev"]
 
 export interface AlyaServer {
   id: string

@@ -5,7 +5,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "Alya Server",
       "options": {
-        "baseURL": "https://alya-server7.anyer-alya5.workers.dev/v1"
+        "baseURL": "https://alya-code.anyer097.workers.dev/v1"
       },
       "models": {
         "alya": {

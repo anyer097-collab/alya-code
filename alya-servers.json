@@ -1,50 +1,21 @@
 {
-  "$comment": "Pool de Alya Servers. Alya Code lee este fichero una vez al día desde el repo y lo fusiona con tu configuración local. Para sumar un servidor basta con añadirlo aquí y abrir un PR, o usar 'alya-code servers add <url>' para añadirlo solo en tu máquina.",
-  "version": 1,
+  "$comment": "Endpoint de Alya Code. 'alya-code' es un agregador que reparte entre todos los Alya Servers y hace failover cuando una cuenta agota su cuota. El pool vive en una variable de entorno del worker, NO aquí: sumar cuentas no toca este fichero.",
+  "version": 2,
   "updated": "2026-10-03",
   "refresh_hours": 24,
+  "endpoint": {
+    "id": "alya-code",
+    "url": "https://alya-code.anyer097.workers.dev",
+    "openai_base_url": "https://alya-code.anyer097.workers.dev/v1",
+    "role": "agregador"
+  },
   "servers": [
     {
-      "id": "alya-server1",
-      "url": "https://alya-server1.anyer097.workers.dev",
+      "id": "alya-code",
+      "url": "https://alya-code.anyer097.workers.dev",
       "region": "auto",
-      "enabled": true
-    },
-    {
-      "id": "alya-server2",
-      "url": "https://alya-server2.anyerjrsenior.workers.dev",
-      "region": "auto",
-      "enabled": true
-    },
-    {
-      "id": "alya-server3",
-      "url": "https://alya-server3.anyer-alya.workers.dev",
-      "region": "auto",
-      "enabled": true
-    },
-    {
-      "id": "alya-server4",
-      "url": "https://alya-server4.anyer-alya2.workers.dev",
-      "region": "auto",
-      "enabled": true
-    },
-    {
-      "id": "alya-server5",
-      "url": "https://alya-server5.anyer-alya3.workers.dev",
-      "region": "auto",
-      "enabled": true
-    },
-    {
-      "id": "alya-server6",
-      "url": "https://alya-server6.anyer-alya4.workers.dev",
-      "region": "auto",
-      "enabled": true
-    },
-    {
-      "id": "alya-server7",
-      "url": "https://alya-server7.anyer-alya5.workers.dev",
-      "region": "auto",
-      "enabled": true
+      "enabled": true,
+      "note": "agregador: reparte entre el pool interno"
     }
   ]
 }
